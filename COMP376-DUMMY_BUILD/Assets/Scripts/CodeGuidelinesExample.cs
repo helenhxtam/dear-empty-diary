@@ -54,6 +54,19 @@ public class CodeGuidelinesExample : MonoBehaviour {
     public int theirInt;
     public string theirNames, herName, hisName;
 
+    // Example use of if-else statements for curly braces.
+    // -- CONVENTION: Always include curly braces for consistency!
+    /*
+     if ( doSomething() ){
+
+     }
+     else {
+     
+     }
+
+    * THIS CONVENTION APPLIES TO: IF statements, Switch statements, try-catch-finally blocks, etc.
+     */
+
     // Example namespace convention (we should be using them if we are going to be packaging features together)
     // -- NAMING CONVENTION: Always start with a capital letter, and each 'word' starts with one as well.
     /* 
