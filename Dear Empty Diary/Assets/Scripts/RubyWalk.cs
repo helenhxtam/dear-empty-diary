@@ -4,39 +4,47 @@ using UnityEngine;
 
 public class RubyWalk : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        movement();
-
+	// FixedUpdate is called once per frame
+	void FixedUpdate () {
+        Movement();
 	}
 
-    void movement()
+    void Movement()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.A))
         {
             transform.Translate(-Vector2.right * 2 * Time.deltaTime);
         }
 
-        if(Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector2.right * 2 * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector2.up * 2 * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(-Vector2.up * 2 * Time.deltaTime);
         }
 
+    }
+
+    // Moves Ruby depending on which door she takes
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Right Door")
+        {
+            GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
+            this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+        }
+        else if (col.gameObject.tag == "Left Door")
+        {
+            GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
+            this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+        }
     }
 }
