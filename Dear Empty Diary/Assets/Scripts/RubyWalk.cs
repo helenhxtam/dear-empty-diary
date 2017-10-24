@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RubyWalk : MonoBehaviour {
 
+    private Vector2 direction;
+
 	// FixedUpdate is called once per frame
 	void FixedUpdate () {
         Movement();
@@ -11,26 +13,32 @@ public class RubyWalk : MonoBehaviour {
 
     void Movement()
     {
-        if(Input.GetKey(KeyCode.A))
+        if (!this.GetComponent<RubyShooting>().isShooting())
         {
-            transform.Translate(-Vector2.right * 2 * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(-Vector2.right * 2 * Time.deltaTime);
+                direction = -Vector2.right;
+            }
 
-        if(Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector2.right * 2 * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector2.right * 2 * Time.deltaTime);
+                direction = Vector2.right;
+            }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector2.up * 2 * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector2.up * 2 * Time.deltaTime);
+                direction = Vector2.up;
+            }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(-Vector2.up * 2 * Time.deltaTime);
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(-Vector2.up * 2 * Time.deltaTime);
+                direction = -Vector2.up;
+            }
         }
-
     }
 
     // Moves Ruby depending on which door she takes
@@ -46,5 +54,10 @@ public class RubyWalk : MonoBehaviour {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
         }
+    }
+
+    public Vector2 GetDirection()
+    {
+        return direction;
     }
 }
