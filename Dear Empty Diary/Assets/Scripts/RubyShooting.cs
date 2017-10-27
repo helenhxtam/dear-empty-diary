@@ -8,7 +8,6 @@ public class RubyShooting : MonoBehaviour {
     public GameObject projectilePrefab;
 
     private bool shooting;
-    private double speed = 10.0f;
     private GameObject projectile;
     private Vector3 position;
     private Vector2 direction;
