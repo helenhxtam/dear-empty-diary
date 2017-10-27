@@ -84,12 +84,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ActivateTextAtLine.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CodeGuidelinesExample.cs" />
+    <Compile Include="Assets\Scripts\Dialogues.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Projectiles.cs" />
     <Compile Include="Assets\Scripts\RubyShooting.cs" />
     <Compile Include="Assets\Scripts\RubyWalk.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Text\Test1.txt" />
+    <None Include="Assets\Text\Test2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class RubyWalk : MonoBehaviour {
 
+    [Tooltip("Defines whether or not Ruby is currently moving.")]
+    public bool isMoving;
+
+    // The direction she's facing
     private Vector2 direction;
 
 	// FixedUpdate is called once per frame
 	void FixedUpdate () {
+        if (!isMoving)
+        {
+            return;
+        }
         Movement();
 	}
 
+    // Keyboard controls to move Ruby
     void Movement()
     {
         if (!this.GetComponent<RubyShooting>().isShooting())
@@ -56,6 +65,7 @@ public class RubyWalk : MonoBehaviour {
         }
     }
 
+    // Returns the direction Ruby's facing
     public Vector2 GetDirection()
     {
         return direction;
