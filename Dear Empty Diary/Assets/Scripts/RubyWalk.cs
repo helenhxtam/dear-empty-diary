@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class RubyWalk : MonoBehaviour {
 
-    [Tooltip("Defines whether or not Ruby is currently moving.")]
-    public bool isMoving;
-
     // The direction she's facing
     private Vector2 direction;
 
 	// FixedUpdate is called once per frame
 	void FixedUpdate () {
-        if (!isMoving)
-        {
-            return;
-        }
         Movement();
 	}
 

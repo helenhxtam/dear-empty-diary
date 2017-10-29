@@ -5,21 +5,26 @@ using UnityEngine.UI;
 
 public class Dialogues : MonoBehaviour {
 
+    [Tooltip("Defines which panel being used.")]
     public GameObject textBox;
 
+    [Tooltip("Defines which text being used.")]
     public Text theText;
 
-    public TextAsset textFile;
+    private TextAsset textFile;
+
+    [Tooltip("Defines all the dialogue lines in the text file.")]
     public string[] textLines;
 
+    [Tooltip("Defines which line in the text file will be displayed.")]
     public int currentLine;
+
+    [Tooltip("Defines which line in the text file will be the last message displayed.")]
     public int endAtLine;
 
-    public RubyWalk ruby;
-
-    public bool isActive;
-
-    public bool stopMovement;
+    private int timer;
+    private RubyWalk ruby;
+    private bool isActive;
 
     // Use this for initialization
     void Start()
@@ -50,7 +55,6 @@ public class Dialogues : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         if(!isActive)
         {
             return;
@@ -58,9 +62,11 @@ public class Dialogues : MonoBehaviour {
 
         theText.text = textLines[currentLine];
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        timer++;
+        if (timer == 100)
         {
             currentLine += 1;
+            timer = 0;
         }
 
         if(currentLine > endAtLine)
@@ -69,26 +75,21 @@ public class Dialogues : MonoBehaviour {
         }
     }
 
+    // EnableTextBox displays the textbox
     public void EnableTextBox()
     {
         textBox.SetActive(true);
         isActive = true;
-        stopMovement = true;
-
-        if(stopMovement)
-        {
-            ruby.isMoving = false;
-        }
     }
 
+    // DisableTextBox hides the textbox
     public void DisableTextBox()
     {
         textBox.SetActive(false);
         isActive = false;
-
-        ruby.isMoving = true;
     }
 
+    // ReloadScript takes a new text and loads it
     public void ReloadScript(TextAsset theText)
     {
         if (theText != null)
