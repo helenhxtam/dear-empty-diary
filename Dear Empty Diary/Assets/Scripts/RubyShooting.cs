@@ -29,7 +29,7 @@ public class RubyShooting : MonoBehaviour {
             Shoot();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (!Input.GetKey(KeyCode.Space))
         {
             shooting = false;
         }
@@ -52,7 +52,7 @@ public class RubyShooting : MonoBehaviour {
         else if (direction == Vector2.up)
             position.y += 0.5f;
         else
-            position.y -= 0.5f;
+            position.y -= 0.7f;
 
         projectile = GameObject.Instantiate(projectilePrefab, position, Quaternion.identity);
 
@@ -61,5 +61,5 @@ public class RubyShooting : MonoBehaviour {
         projectile.transform.parent = this.transform;
     }
 
-    public bool isShooting() { return shooting; }
+    public bool IsShooting() { return shooting; }
 }

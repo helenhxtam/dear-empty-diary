@@ -7,6 +7,11 @@ public class RubyWalk : MonoBehaviour {
     // The direction she's facing
     private Vector2 direction;
 
+    void Start()
+    {
+        direction = Vector2.right;
+    }
+
 	// FixedUpdate is called once per frame
 	void FixedUpdate () {
         Movement();
@@ -15,7 +20,7 @@ public class RubyWalk : MonoBehaviour {
     // Keyboard controls to move Ruby
     void Movement()
     {
-        if (!this.GetComponent<RubyShooting>().isShooting())
+        if (!this.GetComponent<RubyShooting>().IsShooting())
         {
             if (Input.GetKey(KeyCode.A))
             {
