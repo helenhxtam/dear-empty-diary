@@ -6,33 +6,21 @@ public class RubyWalk : MonoBehaviour {
     // The direction she's facing
     private Vector2 direction;
 
-    //animator for characters movement
-    Animator animator;
+    // Animator for characters movement
+    private Animator animator;
 
-    //booleans to switch state of animator
-    [SerializeField]
-    bool isMoving;
-    [SerializeField]
-    bool isForward;
-    [SerializeField]
-    bool isBack;
-    [SerializeField]
-    bool isLeft;
-    [SerializeField]
-    bool isRight;
+    // Booleans to switch state of animator
+    private bool isMoving, isForward, isBack, isLeft, isRight;
+    private float speed = 2.0f;
 
-    private void Start()
-    {
+    void Start() {
         animator = GetComponent<Animator>();
+
+        direction = Vector2.down;
     }
 
     // FixedUpdate is called once per frame
     void FixedUpdate () {
-        if (!(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
-        {
-            isMoving = false;
-            
-        }
         Movement();
 
         animator.SetBool("forward", isForward);
@@ -43,59 +31,41 @@ public class RubyWalk : MonoBehaviour {
     }
 
     // Keyboard controls to move Ruby
-    void Movement()
-    {
-        if (!this.GetComponent<RubyShooting>().isShooting())
-        {
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(-Vector2.right * 2 * Time.deltaTime);
-                direction = -Vector2.right;
-                isForward = false;
-                isBack = false;
-                isLeft = true;
-                isRight = false;
-                isMoving = true;
+    void Movement() {
+        Vector2 aDir = Vector2.zero;
+
+        // Get direction of movement
+        float xDir = Input.GetAxisRaw("Horizontal");
+        float yDir = Input.GetAxisRaw("Vertical");
+
+        isMoving = xDir != 0 || yDir != 0;
+
+        aDir.x = xDir;
+        aDir.y = yDir;
+
+        if (!this.GetComponent<RubyAttacking>().IsAttacking()) {
+            if (aDir.x != 0) {
+                direction = new Vector2(aDir.x, 0);
+                transform.Translate(direction * speed * Time.deltaTime);
+
+                isRight = aDir.x > 0 ? true : false;
+                isLeft = !isRight;
+                isForward = isBack = false;
             }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(Vector2.right * 2 * Time.deltaTime);
-                direction = Vector2.right;
-                isForward = false;
-                isBack = false;
-                isLeft = false;
-                isRight = true;
-                isMoving = true;
-            }
+            if (aDir.y != 0) {
+                direction = new Vector2(0, aDir.y);
+                transform.Translate(new Vector2(0, aDir.y) * speed * Time.deltaTime);
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(Vector2.up * 2 * Time.deltaTime);
-                direction = Vector2.up;
-                isForward = false;
-                isBack = true;
-                isLeft = false;
-                isRight = false;
-                isMoving = true;
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(-Vector2.up * 2 * Time.deltaTime);
-                direction = -Vector2.up;
-                isForward = true;
-                isBack = false;
-                isLeft = false;
-                isRight = false;
-                isMoving = true;
+                isForward = aDir.y > 0 ? false : true;
+                isBack = !isForward;
+                isRight = isLeft = false;
             }
         }
     }
 
     // Moves Ruby depending on which door she takes
-    void OnTriggerEnter2D(Collider2D col)
-    {
+    void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Right Door")
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
@@ -109,8 +79,7 @@ public class RubyWalk : MonoBehaviour {
     }
 
     // Returns the direction Ruby's facing
-    public Vector2 GetDirection()
-    {
+    public Vector2 GetDirection() {
         return direction;
     }
 }
