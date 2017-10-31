@@ -17,6 +17,7 @@ public class RubyWalk : MonoBehaviour {
         animator = GetComponent<Animator>();
 
         direction = Vector2.down;
+        isForward = true;
     }
 
     // FixedUpdate is called once per frame

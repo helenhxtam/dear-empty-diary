@@ -9,7 +9,7 @@ public class RubyAttacking : MonoBehaviour {
 
     private Animator animator;
     private GameObject projectile;
-    private Vector2 direction;
+    private Vector2 direction, lastDirection;
     private Vector3 position;
     private bool shooting, hitting;
 
@@ -42,6 +42,7 @@ public class RubyAttacking : MonoBehaviour {
         }
 
         animator.SetBool("hitting", hitting);
+        animator.SetBool("shooting", shooting);
     }
 
     private void Shoot() {
