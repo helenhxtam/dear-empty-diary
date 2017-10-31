@@ -27,73 +27,60 @@ public class Dialogues : MonoBehaviour {
     private bool isActive;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         ruby = FindObjectOfType<RubyWalk>();
 
-        if (textFile != null)
-        {
+        if (textFile != null) {
             textLines = (textFile.text.Split('\n'));
         }
 
-        if(endAtLine == 0)
-        {
+        if(endAtLine == 0) {
             endAtLine = textLines.Length - 1;
         }
 
-        if(isActive)
-        {
+        if(isActive) {
             EnableTextBox();
         }
-        else
-        {
+        else {
             DisableTextBox();
         }
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(!isActive)
-        {
+    void Update() {
+        if(!isActive) {
             return;
         }
 
         theText.text = textLines[currentLine];
 
         timer++;
-        if (timer == 100)
-        {
+        if (timer == 100) {
             currentLine += 1;
             timer = 0;
         }
 
-        if(currentLine > endAtLine)
-        {
+        if(currentLine > endAtLine) {
             DisableTextBox();
         }
     }
 
     // EnableTextBox displays the textbox
-    public void EnableTextBox()
-    {
+    public void EnableTextBox() {
         textBox.SetActive(true);
         isActive = true;
     }
 
     // DisableTextBox hides the textbox
-    public void DisableTextBox()
-    {
+    public void DisableTextBox() {
         textBox.SetActive(false);
         isActive = false;
     }
 
     // ReloadScript takes a new text and loads it
-    public void ReloadScript(TextAsset theText)
-    {
-        if (theText != null)
-        {
+    public void ReloadScript(TextAsset theText) {
+        if (theText != null) {
             textLines = new string[1];
             textLines = (theText.text.Split('\n'));
         }
