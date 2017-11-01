@@ -19,4 +19,12 @@ public class Projectiles : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Levers")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -56,7 +56,7 @@ public class Dialogues : MonoBehaviour {
         theText.text = textLines[currentLine];
 
         timer++;
-        if (timer == 100) {
+        if (timer == 150) {
             currentLine += 1;
             timer = 0;
         }

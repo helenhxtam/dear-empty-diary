@@ -35,7 +35,7 @@ public class ActivateTextAtLine : MonoBehaviour
     // Upon entering trigger, load a text file and pop up a textbox to display the dialogues
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.name == "Ruby")
+        if (col.name == "Ruby" || col.gameObject.tag == "Right Door" || col.gameObject.tag == "Left Door" || col.gameObject.tag == "Top Door" || col.gameObject.tag == "Bottom Door")
         {
             return;
         }
