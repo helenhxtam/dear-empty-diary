@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     const float HORIZONTAL_ROOM_SIZE_PAN = 13.25f;
-    const float VERTICAL_ROOM_SIZE_PAN   = 15.08f;
+    const float VERTICAL_ROOM_SIZE_PAN   = 10.08f;
 
     public void MoveCamera(string doorName) {
 
