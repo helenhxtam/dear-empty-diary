@@ -95,8 +95,7 @@
     <Compile Include="Assets\Scripts\RubyWalk.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Text\Test1.txt" />
-    <None Include="Assets\Text\Test2.txt" />
+    <None Include="Assets\Text\Dungeon_01_Dialogue.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
