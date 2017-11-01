@@ -4,18 +4,40 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    const float ROOM_SIZE_PAN = 13.25f;
+    const float HORIZONTAL_ROOM_SIZE_PAN = 13.25f;
+    const float VERTICAL_ROOM_SIZE_PAN   = 15.08f;
 
     public void MoveCamera(string doorName) {
+
+        // Move Camera to the Right
         if (doorName == "Right Door") {
             Vector3 newPos = this.transform.position;
-            newPos.x += ROOM_SIZE_PAN;
+            newPos.x += HORIZONTAL_ROOM_SIZE_PAN;
             this.transform.position = newPos;
         }
+
+        // Move Camera to the Left
         else if (doorName == "Left Door") {
             Vector3 newPos = this.transform.position;
-            newPos.x -= ROOM_SIZE_PAN;
+            newPos.x -= HORIZONTAL_ROOM_SIZE_PAN;
             this.transform.position = newPos;
         }
+
+        // Move Camera to the Top
+        else if (doorName == "Top Door")
+        {
+            Vector3 newPos = this.transform.position;
+            newPos.y += VERTICAL_ROOM_SIZE_PAN;
+            this.transform.position = newPos;
+        }
+
+        // Move Camera to the Bottom
+        else if (doorName == "Bottom Door")
+        {
+            Vector3 newPos = this.transform.position;
+            newPos.y -= VERTICAL_ROOM_SIZE_PAN;
+            this.transform.position = newPos;
+        }
+
     }
 }
