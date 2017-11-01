@@ -10,13 +10,17 @@ Play to find out! :)
 Move Ruby by pressing the following:
 
 W - Move Up
+
 A - Move Left
+
 S - Move Down
+
 D - Move Right
 
 To interact with levers, you may do one of the following:
 
 Space - Throw a Rock
+
 M - 'Close-Range' Interact
 
 ### UNITY BUILD DETAILS ###
