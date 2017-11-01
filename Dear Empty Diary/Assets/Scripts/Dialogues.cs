@@ -5,94 +5,82 @@ using UnityEngine.UI;
 
 public class Dialogues : MonoBehaviour {
 
+    [Tooltip("Defines which panel being used.")]
     public GameObject textBox;
 
+    [Tooltip("Defines which text being used.")]
     public Text theText;
 
-    public TextAsset textFile;
+    private TextAsset textFile;
+
+    [Tooltip("Defines all the dialogue lines in the text file.")]
     public string[] textLines;
 
+    [Tooltip("Defines which line in the text file will be displayed.")]
     public int currentLine;
+
+    [Tooltip("Defines which line in the text file will be the last message displayed.")]
     public int endAtLine;
 
-    public RubyWalk ruby;
-
-    public bool isActive;
-
-    public bool stopMovement;
+    private int timer;
+    private RubyWalk ruby;
+    private bool isActive;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         ruby = FindObjectOfType<RubyWalk>();
 
-        if (textFile != null)
-        {
+        if (textFile != null) {
             textLines = (textFile.text.Split('\n'));
         }
 
-        if(endAtLine == 0)
-        {
+        if(endAtLine == 0) {
             endAtLine = textLines.Length - 1;
         }
 
-        if(isActive)
-        {
+        if(isActive) {
             EnableTextBox();
         }
-        else
-        {
+        else {
             DisableTextBox();
         }
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-        if(!isActive)
-        {
+    void Update() {
+        if(!isActive) {
             return;
         }
 
         theText.text = textLines[currentLine];
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
+        timer++;
+        if (timer == 150) {
             currentLine += 1;
+            timer = 0;
         }
 
-        if(currentLine > endAtLine)
-        {
+        if(currentLine > endAtLine) {
             DisableTextBox();
         }
     }
 
-    public void EnableTextBox()
-    {
+    // EnableTextBox displays the textbox
+    public void EnableTextBox() {
         textBox.SetActive(true);
         isActive = true;
-        stopMovement = true;
-
-        if(stopMovement)
-        {
-            ruby.isMoving = false;
-        }
     }
 
-    public void DisableTextBox()
-    {
+    // DisableTextBox hides the textbox
+    public void DisableTextBox() {
         textBox.SetActive(false);
         isActive = false;
-
-        ruby.isMoving = true;
     }
 
-    public void ReloadScript(TextAsset theText)
-    {
-        if (theText != null)
-        {
+    // ReloadScript takes a new text and loads it
+    public void ReloadScript(TextAsset theText) {
+        if (theText != null) {
             textLines = new string[1];
             textLines = (theText.text.Split('\n'));
         }
