@@ -67,14 +67,32 @@ public class RubyWalk : MonoBehaviour {
 
     // Moves Ruby depending on which door she takes
     void OnTriggerEnter2D(Collider2D col) {
+
+        // Move Ruby to the Right
         if (col.gameObject.tag == "Right Door")
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
         }
+
+        // Move Ruby to the Left
         else if (col.gameObject.tag == "Left Door")
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
+            this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+        }
+
+        // Move Ruby to the Top
+        else if (col.gameObject.tag == "Top Door")
+        {
+            GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Top Door");
+            this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+        }
+
+        // Move Ruby to the Bottom
+        else if (col.gameObject.tag == "Bottom Door")
+        {
+            GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Bottom Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
         }
     }
