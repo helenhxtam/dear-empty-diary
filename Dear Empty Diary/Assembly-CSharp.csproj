@@ -55,8 +55,7 @@
      <Compile Include="Assets\Scripts\Projectiles.cs" />
      <Compile Include="Assets\Scripts\RubyAttacking.cs" />
      <Compile Include="Assets\Scripts\RubyWalk.cs" />
-     <None Include="Assets\Text\Test2.txt" />
-     <None Include="Assets\Text\Test1.txt" />
+     <None Include="Assets\Text\Dungeon_01_Dialogue.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
