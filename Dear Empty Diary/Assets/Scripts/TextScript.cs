@@ -20,6 +20,8 @@ public class TextScript : MonoBehaviour
     private GameObject textManager; // The Text Manager object - if we don't assign it, automatically find it.
     [Tooltip("Boolean to determine whether or not, on collision/trigger, we output text.")]
     public bool playText;
+    [Tooltip("Boolean flag to determine if we've already printed out the text before. (To not reprint.)")]
+    public bool alreadyPlayed = false;
     #endregion
 
     #region TextScript functions
@@ -35,7 +37,7 @@ public class TextScript : MonoBehaviour
     // On trigger OR collision, handle checking if we play text at all.
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (playText)
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Bat" || this.gameObject.tag == "Levers"))
         {
             TriggerDialogue();
         }
@@ -43,7 +45,7 @@ public class TextScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (playText)
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Bat"))
         {
             TriggerDialogue();
         }
@@ -55,6 +57,7 @@ public class TextScript : MonoBehaviour
     public void TriggerDialogue()
     {
         textManager.GetComponent<TextManager>().WriteText(dialogueText);
+        alreadyPlayed = true;
     }
     #endregion
 }

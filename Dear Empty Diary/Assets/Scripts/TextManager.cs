@@ -41,7 +41,12 @@ public class TextManager : MonoBehaviour
     {
         // Set the counter back to 0, text's max length, the text array, and print out the first entry
         this.counter = 0;
-        ToggleTextBox();
+        // If we haven't enabled the dialogue box before, we enable it now
+        if (!this.textBox.activeSelf)
+        {
+            ToggleTextBox();
+            // NOTE: This makes it so that text can be overwritten by another incoming text.
+        }
         this.textLength = script.Length - 1; // -1 because of array uses (i.e. an array of 2 elements returns length of 2, but we use element 0 and 1)
         this.text = script;
         this.dialogueText.text = this.text[this.counter];
@@ -51,7 +56,7 @@ public class TextManager : MonoBehaviour
     public void ToggleTextBox()
     {
         this.textBox.SetActive(!this.textBox.activeSelf);
-        this.dialogueBox.SetActive(!this.dialogueBox.activeSelf);
+        // this.dialogueBox.SetActive(!this.dialogueBox.activeSelf);
     }
 
     // Progresses automatically to the next dialogue in the array (if it exists)
