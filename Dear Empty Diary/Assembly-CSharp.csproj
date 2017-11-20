@@ -46,15 +46,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AcquirePage.cs" />
      <Compile Include="Assets\Scripts\ActivateTextAtLine.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CodeGuidelinesExample.cs" />
      <Compile Include="Assets\Scripts\Dialogues.cs" />
      <Compile Include="Assets\Scripts\DoorSwitches.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\LoadOnClick.cs" />
      <Compile Include="Assets\Scripts\Projectiles.cs" />
      <Compile Include="Assets\Scripts\RubyAttacking.cs" />
      <Compile Include="Assets\Scripts\RubyWalk.cs" />
+     <Compile Include="Assets\Scripts\TextManager.cs" />
+     <Compile Include="Assets\Scripts\TextScript.cs" />
      <None Include="Assets\Text\Dungeon_01_Dialogue.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

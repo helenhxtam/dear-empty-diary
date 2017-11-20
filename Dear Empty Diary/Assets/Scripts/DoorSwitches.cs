@@ -21,6 +21,7 @@ public class DoorSwitches : MonoBehaviour {
             // And finally enable its polygon collider
             door.GetComponent<PolygonCollider2D>().enabled = true;
             this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
+            this.GetComponent<TextScript>().TriggerDialogue();
         }
     }
 }
