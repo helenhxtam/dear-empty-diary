@@ -54,7 +54,7 @@ public class RubyWalk : MonoBehaviour {
                 isForward = isBack = false;
             }
 
-            if (aDir.y != 0) {
+            else if (aDir.y != 0) {
                 direction = new Vector2(0, aDir.y);
                 transform.Translate(new Vector2(0, aDir.y) * speed * Time.deltaTime);
 
