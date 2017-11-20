@@ -37,7 +37,11 @@ public class TextScript : MonoBehaviour
     // On trigger OR collision, handle checking if we play text at all.
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Bat" || this.gameObject.tag == "Levers"))
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers")
+        {
+            TriggerDialogue();
+        }
+        if (playText && !alreadyPlayed && col.gameObject.tag == "Melee" && this.gameObject.tag == "Levers")
         {
             TriggerDialogue();
         }
@@ -45,7 +49,7 @@ public class TextScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Bat"))
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Melee"))
         {
             TriggerDialogue();
         }
