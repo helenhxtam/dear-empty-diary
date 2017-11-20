@@ -62,16 +62,11 @@ public class RubyAttacking : MonoBehaviour {
     }
 
     private void ToggleWeaponCollider() {
-        GameObject weapon = GameObject.Find("Bat");
+        GameObject weapon = GameObject.Find("Melee");
 
-        if (direction == -Vector2.right) {
-            // TODO: Rotate Bat by 90 degrees          
-        }
-
-       if (weapon.GetComponent<BoxCollider2D>() != null)
-       {
+        if (weapon.GetComponent<BoxCollider2D>() != null) {
             weapon.GetComponent<BoxCollider2D>().enabled = hitting ? true : false;
-       }
+        }
     }
 
     public bool IsAttacking() { return shooting || hitting; }
