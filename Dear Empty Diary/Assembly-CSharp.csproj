@@ -54,8 +54,10 @@
      <Compile Include="Assets\Scripts\DoorSwitches.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LoadOnClick.cs" />
+     <Compile Include="Assets\Scripts\PressurePlate.cs" />
      <Compile Include="Assets\Scripts\Projectiles.cs" />
      <Compile Include="Assets\Scripts\RubyAttacking.cs" />
+     <Compile Include="Assets\Scripts\RubyPushPull.cs" />
      <Compile Include="Assets\Scripts\RubyWalk.cs" />
      <Compile Include="Assets\Scripts\TextManager.cs" />
      <Compile Include="Assets\Scripts\TextScript.cs" />
