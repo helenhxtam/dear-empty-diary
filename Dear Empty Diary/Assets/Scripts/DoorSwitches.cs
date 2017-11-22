@@ -12,14 +12,28 @@ public class DoorSwitches : MonoBehaviour {
     public Sprite openDoor;
 
     // When Ruby triggers the lever, activate the door (swap sprites)
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.name == "Projectile(Clone)" || col.gameObject.name == "Bat") {
+    /* void OnTriggerEnter2D(Collider2D col) {
+         if (col.gameObject.name == "Projectile(Clone)" || col.gameObject.name == "Bat") {
+             // Disable the box collider on this lever (it was used already)
+             this.GetComponent<BoxCollider2D>().enabled = false;
+             // Swap the door's sprite to the open one
+             door.GetComponent<SpriteRenderer>().sprite = openDoor;
+             // And finally enable its polygon collider
+             door.GetComponent<PolygonCollider2D>().enabled = true;
+             this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
+         }
+     }*/
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "Projectile(Clone)" || col.gameObject.name == "Bat")
+        {
             // Disable the box collider on this lever (it was used already)
             this.GetComponent<BoxCollider2D>().enabled = false;
             // Swap the door's sprite to the open one
             door.GetComponent<SpriteRenderer>().sprite = openDoor;
             // And finally enable its polygon collider
-            door.GetComponent<PolygonCollider2D>().enabled = true;
+            door.GetComponent<CapsuleCollider2D>().enabled = false;
             this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
         }
     }

@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Dialogues.cs" />
     <Compile Include="Assets\Scripts\DoorSwitches.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\MinimapCamera.cs" />
     <Compile Include="Assets\Scripts\Projectiles.cs" />
     <Compile Include="Assets\Scripts\RubyAttacking.cs" />
     <Compile Include="Assets\Scripts\RubyHealth.cs" />

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RubyWalk : MonoBehaviour {
+    //minimap camera
+    public GameObject minimapCamera;
+
     // The direction she's facing
     private Vector2 direction;
 
@@ -73,6 +76,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            minimapCamera.GetComponent<MinimapCamera>().MoveMinimap(col.gameObject.transform.Find("Minimap Centre"));
         }
 
         // Move Ruby to the Left
@@ -80,6 +84,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            minimapCamera.GetComponent<MinimapCamera>().MoveMinimap(col.gameObject.transform.Find("Minimap Centre"));
         }
 
         // Move Ruby to the Top
@@ -87,6 +92,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Top Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            minimapCamera.GetComponent<MinimapCamera>().MoveMinimap(col.gameObject.transform.Find("Minimap Centre"));
         }
 
         // Move Ruby to the Bottom
@@ -94,6 +100,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Bottom Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            minimapCamera.GetComponent<MinimapCamera>().MoveMinimap(col.gameObject.transform.Find("Minimap Centre"));
         }
     }
 
