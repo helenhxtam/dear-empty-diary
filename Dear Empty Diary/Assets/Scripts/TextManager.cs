@@ -22,7 +22,10 @@ public class TextManager : MonoBehaviour
     private GameObject textBox; // The dialogue box panel (called 'Text Box')
     [SerializeField]
     private GameObject dialogueBox; // The text box attached to the panel (called 'Dialogue')
+    [SerializeField]
+    private GameObject nameBox; // The field where the name of the speaking person goes
     private Text dialogueText; // The text associated to the dialogue box
+    private Text nameText; // The text representing the name of the person speaking
     private string[] text; // The text passed to the TextManager to use
     private int textLength; // The number of entries in the text[] array
     private int counter = 0; // By default, start at entry 0 in the text array
@@ -33,6 +36,7 @@ public class TextManager : MonoBehaviour
     {
         // Fetches the dialogue box's text component
         this.dialogueText = dialogueBox.GetComponent<Text>();
+        this.nameText = nameBox.GetComponent<Text>();
         ToggleTextBox();
     }
 
@@ -49,7 +53,7 @@ public class TextManager : MonoBehaviour
     }
 
     // Function that takes in text and outputs it to the dialogue box
-    public void WriteText(string[] script)
+    public void WriteText(string[] script, string name)
     {
         // Set the counter back to 0, text's max length, the text array, and print out the first entry
         this.counter = 0;
@@ -62,13 +66,13 @@ public class TextManager : MonoBehaviour
         this.textLength = script.Length - 1; // -1 because of array uses (i.e. an array of 2 elements returns length of 2, but we use element 0 and 1)
         this.text = script;
         this.dialogueText.text = this.text[this.counter];
+        this.nameText.text = name;
     }
 
     // Toggles the text box (on if off, off if on)
     public void ToggleTextBox()
     {
         this.textBox.SetActive(!this.textBox.activeSelf);
-        // this.dialogueBox.SetActive(!this.dialogueBox.activeSelf);
     }
 
     // Progresses automatically to the next dialogue in the array (if it exists)
