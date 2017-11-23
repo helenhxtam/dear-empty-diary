@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LoadOnClick : MonoBehaviour {
 
+    // The main menu (to return to), the menu shown when paused (escMenu), 
+    // the new game (to overwrite) - confirmationWindow, 
+    // and errorWindow is if you don't have a saved game and want to continue
     private GameObject mainMenu, escMenu, confirmationWindow, errorWindow;
 
+    // # of levels in the build settings
     private int maxLevel;
 
 	void Start() {
+
         maxLevel = SceneManager.sceneCountInBuildSettings - 1;
 
         Time.timeScale = 1;
@@ -33,9 +38,7 @@ public class LoadOnClick : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (escMenu != null) {
-            CheckEsc();
-        }
+        CheckEsc();
     }
 
     public void ConfirmNewLevel(int level) {
@@ -89,19 +92,21 @@ public class LoadOnClick : MonoBehaviour {
         mainMenu.SetActive(true);
     }
 
-    private void LoadLevel(int level) {
+    public void LoadLevel(int level) {
         SceneManager.LoadScene(level);
     }
 
     private void CheckEsc() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (Time.timeScale == 1) {
-                Time.timeScale = 0;
-                escMenu.SetActive(true);
+            escMenu.SetActive(!escMenu.activeSelf);
+
+            if (escMenu.activeSelf)
+            {
+                RubyWalk.canMove = false;
             }
-            else if (Time.timeScale == 0) {
-                Time.timeScale = 1;
-                escMenu.SetActive(false);
+            else
+            {
+                RubyWalk.canMove = true;
             }
         }
     }

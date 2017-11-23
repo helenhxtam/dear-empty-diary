@@ -13,6 +13,9 @@ public class RubyWalk : MonoBehaviour {
     private bool isMoving, isForward, isBack, isLeft, isRight;
     private float speed = 2.0f;
 
+    [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
+    public static bool canMove = true;
+
     void Start() {
         animator = GetComponent<Animator>();
 
@@ -22,7 +25,10 @@ public class RubyWalk : MonoBehaviour {
 
     // FixedUpdate is called once per frame
     void FixedUpdate () {
-        Movement();
+        if (canMove)
+        {
+            Movement();
+        }
 
         animator.SetBool("forward", isForward);
         animator.SetBool("back", isBack);

@@ -36,6 +36,18 @@ public class TextManager : MonoBehaviour
         ToggleTextBox();
     }
 
+    void FixedUpdate()
+    {
+        // If the box is currently active, we allow enter checking to close dialogue
+        if (textBox.activeSelf)
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                ProgressThroughDialogueAutomatically();
+            }
+        }
+    }
+
     // Function that takes in text and outputs it to the dialogue box
     public void WriteText(string[] script)
     {
