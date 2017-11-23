@@ -16,6 +16,8 @@ public class TextScript : MonoBehaviour
     #region Variables
     [Tooltip("The text we wish to print out.")]
     public string[] dialogueText; // The dialogue text we'll be sending over, line by line, to the TextManager.
+    [Tooltip("The name of the person speaking.")]
+    public string name;
     [SerializeField]
     private GameObject textManager; // The Text Manager object - if we don't assign it, automatically find it.
     [Tooltip("Boolean to determine whether or not, on collision/trigger, we output text.")]
@@ -41,7 +43,7 @@ public class TextScript : MonoBehaviour
         {
             TriggerDialogue();
         }
-        if (playText && !alreadyPlayed && col.gameObject.tag == "Melee" && this.gameObject.tag == "Levers")
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Melee" || col.gameObject.tag == "Rock") && this.gameObject.tag == "Levers")
         {
             TriggerDialogue();
         }
@@ -60,7 +62,14 @@ public class TextScript : MonoBehaviour
     // Every other functionality is handled through the button in the canvas.
     public void TriggerDialogue()
     {
-        textManager.GetComponent<TextManager>().WriteText(dialogueText);
+        if (name != null)
+        {
+            textManager.GetComponent<TextManager>().WriteText(dialogueText, name);
+        }
+        else
+        {
+            textManager.GetComponent<TextManager>().WriteText(dialogueText, "");
+        }
         alreadyPlayed = true;
     }
     #endregion

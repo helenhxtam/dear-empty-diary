@@ -22,7 +22,7 @@ public class PressurePlate : MonoBehaviour {
             door.GetComponent<PolygonCollider2D>().enabled = true;
 
             // Trigger Dialog
-            this.GetComponent<TextScript>().TriggerDialogue();
+            // this.GetComponent<TextScript>().TriggerDialogue();
         }
     }
 
