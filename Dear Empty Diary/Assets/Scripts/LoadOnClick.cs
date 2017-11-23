@@ -72,8 +72,16 @@ public class LoadOnClick : MonoBehaviour {
     }
 
     public void Resume() {
-        Time.timeScale = 1;
-        escMenu.SetActive(false);
+        escMenu.SetActive(!escMenu.activeSelf);
+
+        if (escMenu.activeSelf)
+        {
+            RubyWalk.canMove = false;
+        }
+        else
+        {
+            RubyWalk.canMove = true;
+        }
     }
 
     public void Restart(int level) {
