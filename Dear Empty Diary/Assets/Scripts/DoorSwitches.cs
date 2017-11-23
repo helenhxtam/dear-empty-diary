@@ -27,7 +27,7 @@ public class DoorSwitches : MonoBehaviour {
                 // Flip the switch
                 this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
                 // Trigger Dialog 
-                this.GetComponent<TextScript>().TriggerDialogue();
+                // this.GetComponent<TextScript>().TriggerDialogue();
             }
 
             else {
@@ -40,7 +40,7 @@ public class DoorSwitches : MonoBehaviour {
                 // Flip the switch
                 this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
                 // Trigger Dialog 
-                this.GetComponent<TextScript>().TriggerDialogue();
+                // this.GetComponent<TextScript>().TriggerDialogue();
             }
         }
     }
