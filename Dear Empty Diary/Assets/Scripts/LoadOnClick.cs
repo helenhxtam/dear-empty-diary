@@ -35,6 +35,8 @@ public class LoadOnClick : MonoBehaviour {
         if (errorWindow != null) {
             errorWindow.SetActive(false);
         }
+
+        RubyWalk.canMove = true;
     }
 
     void FixedUpdate() {
