@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorSwitches : MonoBehaviour {
+public class LeverManager : MonoBehaviour {
 
     [Tooltip("The door that is connected to this object's switch.")]
     public GameObject attachedObject;
@@ -14,13 +14,18 @@ public class DoorSwitches : MonoBehaviour {
 
         if (col.gameObject.name == "Projectile(Clone)" || col.gameObject.name == "Bat") {
 
+            // If the Attached Object is a Door
             if(attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
                 flipLever();
                 isActivated = !isActivated;
             }
 
-
+            // Dummy Lever / Fake Lever : Do nothing 
+            else {
+                flipLever();
+                isActivated = !isActivated;
+            }
 
             //if (!isActivated) {
             //    // Mark switch as activated
@@ -50,7 +55,7 @@ public class DoorSwitches : MonoBehaviour {
         }
     }
 
-    
+    // Flips the sprite of the Lever
     private void flipLever() {
         this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
     }
