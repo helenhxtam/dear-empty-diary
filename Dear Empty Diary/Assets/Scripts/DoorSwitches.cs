@@ -6,6 +6,7 @@ public class DoorSwitches : MonoBehaviour {
 
     [Tooltip("The door that is connected to this object's switch.")]
     public GameObject door;
+
     [Tooltip("The sprite that a closed door has.")]
     public Sprite closedDoor;
     [Tooltip("The sprite that an open door has.")]
