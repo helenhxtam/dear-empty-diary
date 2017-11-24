@@ -10,7 +10,7 @@ public class DoorManager : MonoBehaviour {
     [Tooltip("The sprite that an open door has.")]
     public Sprite openDoorSprite;
 
-    public bool isOpen;
+    public bool isOpen = false;
 
     // Toggles the Door mode on call
     public void toggleDoor() {

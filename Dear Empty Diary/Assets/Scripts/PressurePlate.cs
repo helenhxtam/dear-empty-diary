@@ -12,15 +12,7 @@ public class PressurePlate : MonoBehaviour {
     // When Pressure is applied to plate
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "PushableBox") {
-
-            this.GetComponent<BoxCollider2D>().enabled = false;
-
-
-            if (attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {
-
-                Debug.Log("PRINT");
-
-                
+            if (attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") { 
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
                 isActivated = !isActivated;
             }
@@ -39,10 +31,9 @@ public class PressurePlate : MonoBehaviour {
 
     // When Pressure is released from plate
     void OnTriggerExit2D(Collider2D col) {
-        if (col.gameObject.tag == "PushableBox") {
 
+        if (col.gameObject.tag == "PushableBox") {
             if (attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {
-                // this.GetComponent<BoxCollider2D>().enabled = true;
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
                 isActivated = !isActivated;
             }
