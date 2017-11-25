@@ -29,6 +29,8 @@ public class TextManager : MonoBehaviour
     private string[] text; // The text passed to the TextManager to use
     private int textLength; // The number of entries in the text[] array
     private int counter = 0; // By default, start at entry 0 in the text array
+    [Tooltip("Boolean flag to check if we can now load the next scene. (Diary dialogue acquisition terminated.)")]
+    public static bool isDiaryPage = false;
     #endregion
 
     #region TextManager Functions
@@ -45,15 +47,20 @@ public class TextManager : MonoBehaviour
         // If the box is currently active, we allow enter checking to close dialogue
         if (textBox.activeSelf)
         {
-            if (Input.GetKey(KeyCode.Return))
+            // Progress normally if it's not a diary page
+            if (Input.GetKeyDown(KeyCode.Return) && !isDiaryPage)
             {
                 ProgressThroughDialogueAutomatically();
+            }
+            else if (Input.GetKeyDown(KeyCode.Return) && isDiaryPage)
+            {
+                ProgressThroughDialogueAsDiaryPage();
             }
         }
     }
 
     // Function that takes in text and outputs it to the dialogue box
-    public void WriteText(string[] script, string name)
+    public void WriteText(string[] script)
     {
         // Set the counter back to 0, text's max length, the text array, and print out the first entry
         this.counter = 0;
@@ -64,9 +71,9 @@ public class TextManager : MonoBehaviour
             // NOTE: This makes it so that text can be overwritten by another incoming text.
         }
         this.textLength = script.Length - 1; // -1 because of array uses (i.e. an array of 2 elements returns length of 2, but we use element 0 and 1)
+        this.nameText.text = script[0].Split(':')[0];
         this.text = script;
-        this.dialogueText.text = this.text[this.counter];
-        this.nameText.text = name;
+        this.dialogueText.text = this.text[this.counter].Split(':')[1];
     }
 
     // Toggles the text box (on if off, off if on)
@@ -83,7 +90,8 @@ public class TextManager : MonoBehaviour
         {
             // Increment our counter, and then print out the text
             this.counter++;
-            this.dialogueText.text = this.text[this.counter];
+            this.nameText.text = this.text[this.counter].Split(':')[0]; 
+            this.dialogueText.text = this.text[this.counter].Split(':')[1];
         }
         else
         {
@@ -91,6 +99,25 @@ public class TextManager : MonoBehaviour
             ToggleTextBox();
         }
     }
-    #endregion
 
+    // Progresses automatically to the next dialogue in the array (if it exists)
+    public void ProgressThroughDialogueAsDiaryPage()
+    {
+        // If there is still some text to output after pressing OK
+        if (counter < textLength)
+        {
+            // Increment our counter, and then print out the text
+            this.counter++;
+            this.nameText.text = this.text[this.counter].Split(':')[0];
+            this.dialogueText.text = this.text[this.counter].Split(':')[1];
+        }
+        else
+        {
+            // Otherwise, toggle the text box on pressing OK
+            ToggleTextBox();
+            // Since it's a special case, load next level
+            GameObject.FindObjectOfType<AcquirePage>().AcquireDiary();
+        }
+    }
+    #endregion
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextScript : MonoBehaviour
+public class DRTextScript : MonoBehaviour
 {
 
     #region TextScript Description
@@ -17,7 +17,7 @@ public class TextScript : MonoBehaviour
     [Tooltip("The text we wish to print out.")]
     public string[] dialogueText; // The dialogue text we'll be sending over, line by line, to the TextManager.
     [SerializeField]
-    private GameObject textManager; // The Text Manager object - if we don't assign it, automatically find it.
+    private GameObject drTextManager; // The Text Manager object - if we don't assign it, automatically find it.
     [Tooltip("Boolean to determine whether or not, on collision/trigger, we output text.")]
     public bool playText;
     [Tooltip("Boolean flag to determine if we've already printed out the text before. (To not reprint.)")]
@@ -30,26 +30,15 @@ public class TextScript : MonoBehaviour
     void Start()
     {
         // Verify that a TextManager was attached, else attach it (find it)
-        if (!this.textManager)
+        if (!this.drTextManager)
         {
-            this.textManager = GameObject.Find("TextManager");
+            this.drTextManager = GameObject.Find("DRTextManager");
         }
     }
 
     // On trigger OR collision, handle checking if we play text at all.
     void OnTriggerEnter2D(Collider2D col)
     {
-        // Case when we walk over a Diary page and pick it up
-        if (isPage && col.gameObject.tag == "Ruby")
-        {
-            Debug.Log("Page");
-            // Freeze Ruby's movement
-            RubyWalk.canMove = false;
-            // Trigger the dialogue as usual
-            TextManager.isDiaryPage = true;
-            TriggerDialogue();
-        }
-
         // Case where we want to play the dialogue, it was not played before, and the collided object is
         // either Ruby or her Melee and we did not interact with a lever (i.e. we passed a door)
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers")
@@ -80,7 +69,7 @@ public class TextScript : MonoBehaviour
     // Every other functionality is handled through the button in the canvas.
     public void TriggerDialogue()
     {
-        textManager.GetComponent<TextManager>().WriteText(dialogueText);
+        drTextManager.GetComponent<DRTextManager>().WriteText(dialogueText);
         alreadyPlayed = true;
     }
     #endregion
