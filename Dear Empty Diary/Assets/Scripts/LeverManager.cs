@@ -12,7 +12,7 @@ public class LeverManager : MonoBehaviour {
     // When Ruby triggers the lever, activate the door (swap sprites)
     void OnTriggerEnter2D(Collider2D col) {
 
-        if (col.gameObject.name == "Projectile(Clone)" || col.gameObject.name == "Bat") {
+        if (col.gameObject.tag == "Rock" || col.gameObject.tag == "Melee") {
 
             // If the Attached Object is a Door
             if(attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {

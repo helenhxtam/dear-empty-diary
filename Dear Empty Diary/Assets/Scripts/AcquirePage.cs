@@ -14,7 +14,7 @@ public class AcquirePage : MonoBehaviour {
 
 	// When Ruby hits a Page with her melee attack, save the game
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.name == "Melee") {
+		if (col.gameObject.tag == "Melee") {
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
 
             Debug.Log("Saved Game");
