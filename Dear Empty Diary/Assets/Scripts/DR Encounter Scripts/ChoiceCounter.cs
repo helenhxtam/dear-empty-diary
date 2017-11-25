@@ -11,9 +11,9 @@ public class ChoiceCounter : MonoBehaviour
     #endregion
 
     #region Variables
-    [Tooltip("The number of good choices Ruby made.")]
+    [Tooltip("The number of good choices made.")]
     public int goodCounter = 0;
-    [Tooltip("The number of bad choices Ruby made.")]
+    [Tooltip("The number of bad choices made.")]
     public int badCounter = 0;
     #endregion
 
