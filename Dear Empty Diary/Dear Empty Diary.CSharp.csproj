@@ -81,6 +81,9 @@
     <Compile Include="Assets\Scripts\AcquirePage.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CodeGuidelinesExample.cs" />
+    <Compile Include="Assets\Scripts\DR Encounter Scripts\ChoiceCounter.cs" />
+    <Compile Include="Assets\Scripts\DR Encounter Scripts\DRTextManager.cs" />
+    <Compile Include="Assets\Scripts\DR Encounter Scripts\DRTextScript.cs" />
     <Compile Include="Assets\Scripts\DoorManager.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\LeverManager.cs" />
