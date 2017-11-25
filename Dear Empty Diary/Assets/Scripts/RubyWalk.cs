@@ -11,7 +11,7 @@ public class RubyWalk : MonoBehaviour {
 
     // Booleans to switch state of animator
     private bool isMoving, isForward, isBack, isLeft, isRight;
-    private float speed = 5.0f; // was 2.0f
+    private float speed = 2.0f;
 
     [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
     public static bool canMove = true;
@@ -39,6 +39,8 @@ public class RubyWalk : MonoBehaviour {
         animator.SetBool("right", isRight);
         animator.SetBool("moving", isMoving);
     }
+
+    public Animator GetRubyAnimator() { return this.animator; }
 
     // Keyboard controls to move Ruby
     void Movement() {

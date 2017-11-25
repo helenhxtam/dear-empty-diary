@@ -22,14 +22,14 @@ public class Projectiles : MonoBehaviour {
 	}
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.tag != "Ruby") {
+        if (col.gameObject.tag != "Ruby" && col.gameObject.tag != "Fence") {
             Destroy(this.gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag != "Ruby")
+        if (col.gameObject.tag != "Ruby" && col.gameObject.tag != "TextTrigger")
         {
             Destroy(this.gameObject);
         }
