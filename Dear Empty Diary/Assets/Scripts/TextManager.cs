@@ -29,6 +29,8 @@ public class TextManager : MonoBehaviour
     private string[] text; // The text passed to the TextManager to use
     private int textLength; // The number of entries in the text[] array
     private int counter = 0; // By default, start at entry 0 in the text array
+    [Tooltip("Boolean flag to check if we can now load the next scene. (Diary dialogue acquisition terminated.)")]
+    public static bool isDiaryPage = false;
     #endregion
 
     #region TextManager Functions
@@ -45,9 +47,14 @@ public class TextManager : MonoBehaviour
         // If the box is currently active, we allow enter checking to close dialogue
         if (textBox.activeSelf)
         {
-            if (Input.GetKey(KeyCode.Return))
+            // Progress normally if it's not a diary page
+            if (Input.GetKeyDown(KeyCode.Return) && !isDiaryPage)
             {
                 ProgressThroughDialogueAutomatically();
+            }
+            else if (Input.GetKeyDown(KeyCode.Return) && isDiaryPage)
+            {
+                ProgressThroughDialogueAsDiaryPage();
             }
         }
     }
@@ -91,6 +98,24 @@ public class TextManager : MonoBehaviour
             ToggleTextBox();
         }
     }
-    #endregion
 
+    // Progresses automatically to the next dialogue in the array (if it exists)
+    public void ProgressThroughDialogueAsDiaryPage()
+    {
+        // If there is still some text to output after pressing OK
+        if (counter < textLength)
+        {
+            // Increment our counter, and then print out the text
+            this.counter++;
+            this.dialogueText.text = this.text[this.counter];
+        }
+        else
+        {
+            // Otherwise, toggle the text box on pressing OK
+            ToggleTextBox();
+            // Since it's a special case, load next level
+            GameObject.FindObjectOfType<AcquirePage>().AcquireDiary();
+        }
+    }
+    #endregion
 }

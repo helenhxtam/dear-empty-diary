@@ -24,6 +24,8 @@ public class TextScript : MonoBehaviour
     public bool playText;
     [Tooltip("Boolean flag to determine if we've already printed out the text before. (To not reprint.)")]
     public bool alreadyPlayed = false;
+    [Tooltip("Boolean flag to signal if the collided trigger for the text is a Diary Page. (Special Interaction)")]
+    public bool isPage = false;
     #endregion
 
     #region TextScript functions
@@ -39,10 +41,26 @@ public class TextScript : MonoBehaviour
     // On trigger OR collision, handle checking if we play text at all.
     void OnTriggerEnter2D(Collider2D col)
     {
+        // Case when we walk over a Diary page and pick it up
+        if (isPage && col.gameObject.tag == "Ruby")
+        {
+            Debug.Log("Page");
+            // Freeze Ruby's movement
+            RubyWalk.canMove = false;
+            // Trigger the dialogue as usual
+            TextManager.isDiaryPage = true;
+            TriggerDialogue();
+        }
+
+        // Case where we want to play the dialogue, it was not played before, and the collided object is
+        // either Ruby or her Melee and we did not interact with a lever (i.e. we passed a door)
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers")
         {
             TriggerDialogue();
         }
+
+        // Similar case, however only if the collided object is melee (Ruby's M) or a projectile (rock)
+        // So for the levers from range (walking over them won't trigger it)
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Melee" || col.gameObject.tag == "Rock") && this.gameObject.tag == "Levers")
         {
             TriggerDialogue();
@@ -51,6 +69,8 @@ public class TextScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        // If we collide and it was either Ruby or her Melee, we trigger dialogue
+        // This could be for boxes or the likes later
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Melee"))
         {
             TriggerDialogue();
