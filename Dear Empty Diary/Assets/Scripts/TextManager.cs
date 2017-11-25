@@ -60,7 +60,7 @@ public class TextManager : MonoBehaviour
     }
 
     // Function that takes in text and outputs it to the dialogue box
-    public void WriteText(string[] script, string name)
+    public void WriteText(string[] script, string nameField)
     {
         // Set the counter back to 0, text's max length, the text array, and print out the first entry
         this.counter = 0;
@@ -73,7 +73,7 @@ public class TextManager : MonoBehaviour
         this.textLength = script.Length - 1; // -1 because of array uses (i.e. an array of 2 elements returns length of 2, but we use element 0 and 1)
         this.text = script;
         this.dialogueText.text = this.text[this.counter];
-        this.nameText.text = name;
+        this.nameText.text = nameField;
     }
 
     // Toggles the text box (on if off, off if on)

@@ -17,7 +17,7 @@ public class TextScript : MonoBehaviour
     [Tooltip("The text we wish to print out.")]
     public string[] dialogueText; // The dialogue text we'll be sending over, line by line, to the TextManager.
     [Tooltip("The name of the person speaking.")]
-    public string name;
+    public string nameField;
     [SerializeField]
     private GameObject textManager; // The Text Manager object - if we don't assign it, automatically find it.
     [Tooltip("Boolean to determine whether or not, on collision/trigger, we output text.")]
@@ -82,9 +82,9 @@ public class TextScript : MonoBehaviour
     // Every other functionality is handled through the button in the canvas.
     public void TriggerDialogue()
     {
-        if (name != null)
+        if (nameField != null)
         {
-            textManager.GetComponent<TextManager>().WriteText(dialogueText, name);
+            textManager.GetComponent<TextManager>().WriteText(dialogueText, nameField);
         }
         else
         {
