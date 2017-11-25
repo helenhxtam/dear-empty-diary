@@ -16,6 +16,9 @@ public class RubyWalk : MonoBehaviour {
     [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
     public static bool canMove = true;
 
+    [Tooltip("If it's the DR Encounter, Ruby can't move.")]
+    public bool isDarkRubyEncounter = false;
+
     void Start() {
         animator = GetComponent<Animator>();
 
@@ -25,7 +28,7 @@ public class RubyWalk : MonoBehaviour {
 
     // FixedUpdate is called once per frame
     void FixedUpdate () {
-        if (canMove)
+        if (canMove && !isDarkRubyEncounter)
         {
             Movement();
         }

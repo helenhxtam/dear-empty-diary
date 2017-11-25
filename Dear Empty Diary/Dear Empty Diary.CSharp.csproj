@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AcquirePage.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ChoiceCounter.cs" />
     <Compile Include="Assets\Scripts\CodeGuidelinesExample.cs" />
     <Compile Include="Assets\Scripts\DoorManager.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
