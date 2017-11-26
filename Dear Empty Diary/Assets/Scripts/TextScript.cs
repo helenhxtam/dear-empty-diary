@@ -42,7 +42,6 @@ public class TextScript : MonoBehaviour
         // Case when we walk over a Diary page and pick it up
         if (isPage && col.gameObject.tag == "Ruby")
         {
-            Debug.Log("Page");
             // Freeze Ruby's movement
             RubyWalk.canMove = false;
             // Trigger the dialogue as usual
@@ -63,12 +62,17 @@ public class TextScript : MonoBehaviour
         {
             TriggerDialogue();
         }
+
+        // Another similar case, but when the collided object is a box
+        // That is, for pressure plates
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "PushableBox")) {
+            TriggerDialogue();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         // If we collide and it was either Ruby or her Melee, we trigger dialogue
-        // This could be for boxes or the likes later
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Melee"))
         {
             TriggerDialogue();

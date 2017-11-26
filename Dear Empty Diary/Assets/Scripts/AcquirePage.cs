@@ -14,24 +14,6 @@ public class AcquirePage : MonoBehaviour {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
     }
 
-	// When Ruby hits a Page with her melee attack, save the game
-    // TODO: Remove this
-	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.tag == "Melee") {
-            PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
-
-            Debug.Log("Saved Game");
-
-            if (currentLevel + 1 <= maxLevel) {
-                SceneManager.LoadScene(currentLevel + 1);
-            }
-            else {
-                Debug.Log("You finished the game!");
-                SceneManager.LoadScene(0);
-            }
-        }
-	}
-
     // Loads next level after acquiring the diary page
     public void AcquireDiary()
     {

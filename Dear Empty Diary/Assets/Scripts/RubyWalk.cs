@@ -24,6 +24,7 @@ public class RubyWalk : MonoBehaviour {
 
     void Start() {
         animator = GetComponent<Animator>();
+        fadeObject.SetActive(false);
 
         direction = Vector2.down;
         isForward = true;
@@ -122,12 +123,13 @@ public class RubyWalk : MonoBehaviour {
 
     public IEnumerator fade()
     {
+        fadeObject.SetActive(true);
         Image img = fadeObject.GetComponent<Image>();
         for (float i = 1; i >= 0; i -= (Time.deltaTime / 2))
         {
             img.color = new Color(0, 0, 0, i);
             yield return null;
         }
-
+        fadeObject.SetActive(false);
     }
 }
