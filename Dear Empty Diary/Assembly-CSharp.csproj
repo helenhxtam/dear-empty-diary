@@ -46,13 +46,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\RubyHealth.cs" />
      <Compile Include="Assets\Scripts\AcquirePage.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CodeGuidelinesExample.cs" />
+     <Compile Include="Assets\Scripts\DR Encounter Scripts\ChoiceCounter.cs" />
+     <Compile Include="Assets\Scripts\DR Encounter Scripts\DRTextManager.cs" />
+     <Compile Include="Assets\Scripts\DR Encounter Scripts\DRTextScript.cs" />
      <Compile Include="Assets\Scripts\DoorManager.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LeverManager.cs" />
      <Compile Include="Assets\Scripts\LoadOnClick.cs" />
+     <Compile Include="Assets\Scripts\OnMouseHover.cs" />
      <Compile Include="Assets\Scripts\PressurePlate.cs" />
      <Compile Include="Assets\Scripts\Projectiles.cs" />
      <Compile Include="Assets\Scripts\RubyAttacking.cs" />
