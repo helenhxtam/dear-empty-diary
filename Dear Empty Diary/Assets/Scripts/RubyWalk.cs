@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RubyWalk : MonoBehaviour {
     // The direction she's facing
@@ -18,6 +19,8 @@ public class RubyWalk : MonoBehaviour {
 
     [Tooltip("If it's the DR Encounter, Ruby can't move.")]
     public bool isDarkRubyEncounter = false;
+
+    public GameObject fadeObject;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -84,6 +87,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            StartCoroutine(fade());
         }
 
         // Move Ruby to the Left
@@ -91,6 +95,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            StartCoroutine(fade());
         }
 
         // Move Ruby to the Top
@@ -98,6 +103,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Top Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            StartCoroutine(fade());
         }
 
         // Move Ruby to the Bottom
@@ -105,11 +111,23 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Bottom Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            StartCoroutine(fade());
         }
     }
 
     // Returns the direction Ruby's facing
     public Vector2 GetDirection() {
         return direction;
+    }
+
+    public IEnumerator fade()
+    {
+        Image img = fadeObject.GetComponent<Image>();
+        for (float i = 1; i >= 0; i -= (Time.deltaTime / 2))
+        {
+            img.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+
     }
 }
