@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\RubyHealth.cs" />
      <Compile Include="Assets\Scripts\AcquirePage.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CodeGuidelinesExample.cs" />
