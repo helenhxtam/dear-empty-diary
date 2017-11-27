@@ -60,12 +60,13 @@
      <Compile Include="Assets\Scripts\OnMouseHover.cs" />
      <Compile Include="Assets\Scripts\PressurePlate.cs" />
      <Compile Include="Assets\Scripts\Projectiles.cs" />
+     <Compile Include="Assets\Scripts\Puzzle Scripts\Level2Room3Doors.cs" />
+     <Compile Include="Assets\Scripts\Puzzle Scripts\Level2Room4Puzzle.cs" />
      <Compile Include="Assets\Scripts\RubyAttacking.cs" />
      <Compile Include="Assets\Scripts\RubyPushPull.cs" />
      <Compile Include="Assets\Scripts\RubyWalk.cs" />
      <Compile Include="Assets\Scripts\TextManager.cs" />
      <Compile Include="Assets\Scripts\TextScript.cs" />
-     <Compile Include="Assets\Scripts\Trap Scripts\Level2Room4Puzzle.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
