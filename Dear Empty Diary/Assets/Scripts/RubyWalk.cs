@@ -12,7 +12,7 @@ public class RubyWalk : MonoBehaviour {
 
     // Booleans to switch state of animator
     private bool isMoving, isForward, isBack, isLeft, isRight;
-    private float speed = 2.0f;
+    private float speed = 3.5f;
 
     [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
     public static bool canMove = true;
@@ -125,7 +125,7 @@ public class RubyWalk : MonoBehaviour {
     {
         fadeObject.SetActive(true);
         Image img = fadeObject.GetComponent<Image>();
-        for (float i = 1; i >= 0; i -= (Time.deltaTime / 2))
+        for (float i = 1; i >= 0; i -= (Time.deltaTime / 0.8f))
         {
             img.color = new Color(0, 0, 0, i);
             yield return null;
