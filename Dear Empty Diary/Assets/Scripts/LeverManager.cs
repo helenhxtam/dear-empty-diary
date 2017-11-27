@@ -7,7 +7,10 @@ public class LeverManager : MonoBehaviour {
     [Tooltip("The door that is connected to this object's switch.")]
     public GameObject attachedObject;
 
-    private bool isActivated;
+    public Sprite leverEnabled;
+    public Sprite leverDisabled;
+
+    private bool isActivated = false;
 
     // When Ruby triggers the lever, activate the door (swap sprites)
     void OnTriggerEnter2D(Collider2D col) {
@@ -17,14 +20,20 @@ public class LeverManager : MonoBehaviour {
             // If the Attached Object is a Door
             if(attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
-                flipLever();
                 isActivated = !isActivated;
+                flipLever();
+            }
+
+            else if(attachedObject.tag == "Cannon") {
+                attachedObject.GetComponent<Cannon>().fireCannon();
+                isActivated = !isActivated;
+                flipLever(); 
             }
 
             // Dummy Lever / Fake Lever : Do nothing 
             else {
-                flipLever();
                 isActivated = !isActivated;
+                flipLever();
             }
 
             //if (!isActivated) {
@@ -55,11 +64,16 @@ public class LeverManager : MonoBehaviour {
         }
     }
 
-    public Sprite lever;
+    
 
     // Flips the sprite of the Lever
-    private void flipLever()
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = lever;
+    private void flipLever() {
+        if (isActivated) {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = leverEnabled;
+        }
+
+        else {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = leverDisabled;
+        }
     }
 }

@@ -26,6 +26,11 @@ public class PressurePlate : MonoBehaviour {
 
             // Trigger Dialog
             // this.GetComponent<TextScript>().TriggerDialogue();
+
+            if(attachedObject.tag == "Level2Room4Puzzle") {
+                attachedObject.GetComponent<Level2Room4Puzzle>().increaseTrapCount();
+                isActivated = !isActivated;
+            }
         }
     }
 
