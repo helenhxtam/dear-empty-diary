@@ -64,9 +64,6 @@ public class LoadOnClick : MonoBehaviour {
         else if (currentLevel + 1 <= maxLevel) {
 			LoadLevel(currentLevel + 1);
 		}
-        //else {
-        //    LoadLevel(1);
-        //}
     }
 
     public void ExitApplication() {

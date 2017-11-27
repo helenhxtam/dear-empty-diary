@@ -55,8 +55,11 @@ public class LeverManager : MonoBehaviour {
         }
     }
 
+    public Sprite lever;
+
     // Flips the sprite of the Lever
-    private void flipLever() {
-        this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
+    private void flipLever()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = lever;
     }
- }
+}
