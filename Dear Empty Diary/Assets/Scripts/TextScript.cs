@@ -42,10 +42,9 @@ public class TextScript : MonoBehaviour
         // Case when we walk over a Diary page and pick it up
         if (isPage && col.gameObject.tag == "Ruby")
         {
-            // Freeze Ruby's movement
-            RubyWalk.canMove = false;
             // Trigger the dialogue as usual
             TextManager.isDiaryPage = true;
+            GameObject.FindGameObjectWithTag("Page").GetComponent<SpriteRenderer>().sprite = null;
             TriggerDialogue();
         }
 
