@@ -10,7 +10,7 @@ public class LeverManager : MonoBehaviour {
     public Sprite leverEnabled;
     public Sprite leverDisabled;
 
-    private bool isActivated;
+    private bool isActivated = false;
 
     // When Ruby triggers the lever, activate the door (swap sprites)
     void OnTriggerEnter2D(Collider2D col) {
@@ -22,6 +22,12 @@ public class LeverManager : MonoBehaviour {
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
                 isActivated = !isActivated;
                 flipLever();
+            }
+
+            else if(attachedObject.tag == "Cannon") {
+                attachedObject.GetComponent<Cannon>().fireCannon();
+                isActivated = !isActivated;
+                flipLever(); 
             }
 
             // Dummy Lever / Fake Lever : Do nothing 
