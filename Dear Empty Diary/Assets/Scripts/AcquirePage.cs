@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AcquirePage : MonoBehaviour {
 
-    // Maximum loadable level, and current level
+    // Maximum loadable level and current level
     private int maxLevel, currentLevel;
 
     // Sets up the maxLevel and currentLevel
@@ -18,8 +18,6 @@ public class AcquirePage : MonoBehaviour {
     public void AcquireDiary()
     {
         PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
-        
-        Debug.Log("Saved Game");
 
         if (currentLevel + 1 <= maxLevel)
         {
@@ -27,7 +25,6 @@ public class AcquirePage : MonoBehaviour {
         }
         else
         {
-            Debug.Log("You finished the game!");
             SceneManager.LoadScene(0);
         }
     }

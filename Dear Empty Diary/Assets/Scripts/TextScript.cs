@@ -50,7 +50,8 @@ public class TextScript : MonoBehaviour
 
         // Case where we want to play the dialogue, it was not played before, and the collided object is
         // either Ruby or her Melee and we did not interact with a lever (i.e. we passed a door)
-        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers")
+        // Added the case where Ruby should not trigger the dialogue when stepping on the pressure plate
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers" && this.gameObject.tag != "PressurePlate")
         {
             TriggerDialogue();
         }
