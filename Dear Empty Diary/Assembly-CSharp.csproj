@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\RubyWalk.cs" />
      <Compile Include="Assets\Scripts\TextManager.cs" />
      <Compile Include="Assets\Scripts\TextScript.cs" />
+     <Compile Include="Assets\Scripts\Trap Scripts\Level2Room4Puzzle.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
