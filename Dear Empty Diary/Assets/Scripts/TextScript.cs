@@ -42,16 +42,16 @@ public class TextScript : MonoBehaviour
         // Case when we walk over a Diary page and pick it up
         if (isPage && col.gameObject.tag == "Ruby")
         {
-            // Freeze Ruby's movement
-            RubyWalk.canMove = false;
             // Trigger the dialogue as usual
             TextManager.isDiaryPage = true;
+            GameObject.FindGameObjectWithTag("Page").GetComponent<SpriteRenderer>().sprite = null;
             TriggerDialogue();
         }
 
         // Case where we want to play the dialogue, it was not played before, and the collided object is
         // either Ruby or her Melee and we did not interact with a lever (i.e. we passed a door)
-        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers")
+        // Added the case where Ruby should not trigger the dialogue when stepping on the pressure plate
+        if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers" && this.gameObject.tag != "PressurePlate")
         {
             TriggerDialogue();
         }
