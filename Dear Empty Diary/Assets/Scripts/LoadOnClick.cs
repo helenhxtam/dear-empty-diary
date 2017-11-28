@@ -112,7 +112,6 @@ public class LoadOnClick : MonoBehaviour {
     private void CheckEsc() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             escMenu.SetActive(!escMenu.activeSelf);
-            
 
             if (escMenu.activeSelf)
             {
@@ -121,7 +120,6 @@ public class LoadOnClick : MonoBehaviour {
                 {
                     wasOn = true;
                     dialogueBox.SetActive(false);
-                    Debug.Log("mais");
                 }
             }
             else
