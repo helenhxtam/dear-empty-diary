@@ -13,6 +13,8 @@ public class RubyWalk : MonoBehaviour {
     // Booleans to switch state of animator
     private bool isMoving, isForward, isBack, isLeft, isRight;
     private float speed = 3.5f;
+    // Bool to signal if Ruby hit a trap for the first time or not
+    private bool hasHitFirstTrap = false;
 
     [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
     public static bool canMove = true;
@@ -113,6 +115,16 @@ public class RubyWalk : MonoBehaviour {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Bottom Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
             StartCoroutine(fade());
+        }
+        else if (col.gameObject.tag == "Trap" && !hasHitFirstTrap)
+        {
+            hasHitFirstTrap = true; // No longer do this case after 1st trap collision
+            string[] trapDialogue = {"Ruby : Ouch! What the... What was that?",
+                                    "Diary : Oh no... I knew this wouldn't be easy. Ruby, it seems like there are traps now. Be careful where you walk! You only have so much health!",
+                                    "??? : Hahaha! You thought this would be easy? Don't make me laugh! You're better than that, Ruby! How could you be so foolish to step on it? Pathetic.",
+                                    "Ruby : Grr...",
+                                    "Diary : Calm down! We're still fine! Let's keep going, I can sense the page!"};
+            GameObject.Find("TextManager").GetComponent<TextManager>().WriteText(trapDialogue);
         }
     }
 
