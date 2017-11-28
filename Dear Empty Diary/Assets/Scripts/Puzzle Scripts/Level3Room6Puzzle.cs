@@ -30,9 +30,11 @@ public class Level3Room6Puzzle : MonoBehaviour {
         // Puzzle Completed (All 4 pressure plates Disabled)
         if(isActivated && !isCompleted && pressedPressurePlates == 0) {
             isCompleted = true;
+            isActivated = false;
             initialDoor.GetComponent<DoorManager>().toggleDoor();
             progressionDoor.GetComponent<DoorManager>().toggleDoor();
         }
+        
     }
 
     // Activate the puzzle 
