@@ -88,6 +88,8 @@
     <Compile Include="Assets\Scripts\DR Encounter Scripts\DRTextScript.cs" />
     <Compile Include="Assets\Scripts\DoorManager.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Intro Scene Scripts\IntroScene.cs" />
+    <Compile Include="Assets\Scripts\Intro Scene Scripts\IntroSceneManager.cs" />
     <Compile Include="Assets\Scripts\LeverManager.cs" />
     <Compile Include="Assets\Scripts\LoadOnClick.cs" />
     <Compile Include="Assets\Scripts\OnMouseHover.cs" />
