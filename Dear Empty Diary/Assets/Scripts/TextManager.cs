@@ -39,6 +39,10 @@ public class TextManager : MonoBehaviour
         // Fetches the dialogue box's text component
         this.dialogueText = dialogueBox.GetComponent<Text>();
         this.nameText = nameBox.GetComponent<Text>();
+
+        // Prevent Level 2 to transition to Level 3 right after the first dialogue
+        isDiaryPage = false;
+
         ToggleTextBox();
     }
 
