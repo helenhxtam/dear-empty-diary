@@ -31,6 +31,19 @@ public class PressurePlate : MonoBehaviour {
                 attachedObject.GetComponent<Level2Room4Puzzle>().increaseTrapCount();
                 isActivated = !isActivated;
             }
+
+            // Level 3: Room 6 Puzzle
+            if (attachedObject.tag == "Level3Room6Puzzle") {
+                attachedObject.GetComponent<Level3Room6Puzzle>().incrementPressurePlate();
+            }
+        }
+
+        // Level 3: Room 6 Puzzle (Puzzle Activation Trigger)
+        if (col.gameObject.tag == "Ruby") {
+            if (attachedObject.tag == "Level3Room6Puzzle") { 
+                attachedObject.GetComponent<Level3Room6Puzzle>().activateRoom();
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 
@@ -41,6 +54,11 @@ public class PressurePlate : MonoBehaviour {
             if (attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
                 isActivated = !isActivated;
+            }
+
+            // Level 3: Room 6 Puzzle
+            if (attachedObject.tag == "Level3Room6Puzzle") {
+                attachedObject.GetComponent<Level3Room6Puzzle>().decrementPressurePlate();
             }
         }
     }
