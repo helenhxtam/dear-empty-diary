@@ -78,13 +78,19 @@ public class LoadOnClick : MonoBehaviour {
     public void Resume() {
         escMenu.SetActive(!escMenu.activeSelf);
 
-        if (escMenu.activeSelf)
-        {
+        if (escMenu.activeSelf) {
             RubyWalk.canMove = false;
+            if (dialogueBox.activeSelf) {
+                wasOn = true;
+                dialogueBox.SetActive(false);
+            }
         }
-        else
-        {
+        else {
             RubyWalk.canMove = true;
+            if (!dialogueBox.activeSelf && wasOn == true) {
+                wasOn = false;
+                dialogueBox.SetActive(true);
+            }
         }
     }
 
