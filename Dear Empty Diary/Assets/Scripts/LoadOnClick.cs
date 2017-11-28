@@ -116,7 +116,7 @@ public class LoadOnClick : MonoBehaviour {
             if (escMenu.activeSelf)
             {
                 RubyWalk.canMove = false;
-                if (dialogueBox.activeSelf == true)
+                if (dialogueBox.activeSelf)
                 {
                     wasOn = true;
                     dialogueBox.SetActive(false);
@@ -125,7 +125,7 @@ public class LoadOnClick : MonoBehaviour {
             else
             {
                 RubyWalk.canMove = true;
-                if (dialogueBox.activeSelf != true && wasOn == true)
+                if (!dialogueBox.activeSelf && wasOn == true)
                 {
                     wasOn = false;
                     dialogueBox.SetActive(true);
