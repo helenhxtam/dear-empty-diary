@@ -10,15 +10,20 @@ public class LoadOnClick : MonoBehaviour {
     // and errorWindow is if you don't have a saved game and want to continue
     private GameObject mainMenu, escMenu, confirmationWindow, errorWindow;
 
+    GameObject dialogueBox;
+
     // # of levels in the build settings
     private int maxLevel;
 
-	void Start() {
+    // checks if the dialogue box was active before pausing
+    bool wasOn = false;
+
+    void Start() {
 
         maxLevel = SceneManager.sceneCountInBuildSettings - 1;
 
         Time.timeScale = 1;
-
+        dialogueBox = GameObject.Find("Text Box");
         mainMenu = GameObject.Find("Main Menu");
         escMenu = GameObject.Find("Escape Menu");
         confirmationWindow = GameObject.Find("Confirmation Window");
@@ -103,17 +108,30 @@ public class LoadOnClick : MonoBehaviour {
         SceneManager.LoadScene(level);
     }
 
+
     private void CheckEsc() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             escMenu.SetActive(!escMenu.activeSelf);
+            
 
             if (escMenu.activeSelf)
             {
                 RubyWalk.canMove = false;
+                if (dialogueBox.activeSelf == true)
+                {
+                    wasOn = true;
+                    dialogueBox.SetActive(false);
+                    Debug.Log("mais");
+                }
             }
             else
             {
                 RubyWalk.canMove = true;
+                if (dialogueBox.activeSelf != true && wasOn == true)
+                {
+                    wasOn = false;
+                    dialogueBox.SetActive(true);
+                }
             }
         }
     }
