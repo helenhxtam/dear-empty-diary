@@ -87,12 +87,13 @@ public class RubyWalk : MonoBehaviour {
 
     // Moves Ruby depending on which door she takes
     void OnTriggerEnter2D(Collider2D col) {
-
+        AudioSource source = col.gameObject.GetComponent<AudioSource>();
         // Move Ruby to the Right
         if (col.gameObject.tag == "Right Door")
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
             StartCoroutine(fade());
         }
 
@@ -101,6 +102,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
             StartCoroutine(fade());
         }
 
@@ -109,6 +111,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Top Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
             StartCoroutine(fade());
         }
 
@@ -117,6 +120,7 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Bottom Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
             StartCoroutine(fade());
         }
         else if (col.gameObject.tag == "Trap" && !hasHitFirstTrap)
