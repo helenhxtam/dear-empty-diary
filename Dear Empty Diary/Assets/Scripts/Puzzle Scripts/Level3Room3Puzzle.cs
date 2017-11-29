@@ -8,6 +8,8 @@ public class Level3Room3Puzzle : MonoBehaviour {
     public GameObject doorOne;
     public GameObject doorTwo;
 
+
+
     // Toggles the door
     public void toggleDoors() {
         doorOne.GetComponent<DoorManager>().toggleDoor();
