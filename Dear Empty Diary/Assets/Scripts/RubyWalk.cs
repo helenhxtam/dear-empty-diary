@@ -15,6 +15,8 @@ public class RubyWalk : MonoBehaviour {
     private float speed = 3.5f;
     // Bool to signal if Ruby hit a trap for the first time or not
     private bool hasHitFirstTrap = false;
+    // Bool to signal if Ruby got hit by a CannonProjectile or not
+    private bool hasHitFirstCannonProjectile = false;
 
     [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
     public static bool canMove = true;
@@ -22,6 +24,7 @@ public class RubyWalk : MonoBehaviour {
     [Tooltip("If it's the DR Encounter, Ruby can't move.")]
     public bool isDarkRubyEncounter = false;
 
+    [Tooltip("The fade panel when crossing rooms.")]
     public GameObject fadeObject;
 
     void Start() {
@@ -122,6 +125,13 @@ public class RubyWalk : MonoBehaviour {
             string[] trapDialogue = {"Ruby : Ouch! That hurt!",
                                     "Diary : Watch your step Ruby! These traps hurt!"};
             GameObject.Find("TextManager").GetComponent<TextManager>().WriteText(trapDialogue);
+        }
+        else if (col.gameObject.tag == "CannonProjectile" && !hasHitFirstCannonProjectile)
+        {
+            hasHitFirstCannonProjectile = true;
+            string[] cannonDialogue = {"Ruby: Ouch! That hurt!",
+                                      "Diary: Be careful!"};
+            GameObject.Find("TextManager").GetComponent<TextManager>().WriteText(cannonDialogue);
         }
     }
 

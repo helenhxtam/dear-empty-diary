@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RubyHealth : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class RubyHealth : MonoBehaviour
         {
             case 0:
                 healthImage.sprite = heartSprites[0];
-                Destroy(this.gameObject);
+                SceneManager.LoadScene(0);
                 break;
             case 1:
                 healthImage.sprite = heartSprites[1];

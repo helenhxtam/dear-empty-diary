@@ -58,7 +58,6 @@ public class RubyAttacking : MonoBehaviour {
         projectile = GameObject.Instantiate(projectilePrefab, position, Quaternion.identity);
 
         projectile.GetComponent<Rigidbody2D>().velocity = direction * 10.0f;
-        projectile.transform.parent = this.transform;
     }
 
     private void ToggleWeaponCollider() {
