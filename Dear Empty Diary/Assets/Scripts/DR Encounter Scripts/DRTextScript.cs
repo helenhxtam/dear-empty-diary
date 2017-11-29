@@ -24,11 +24,19 @@ public class DRTextScript : MonoBehaviour
     public bool alreadyPlayed = false;
     [Tooltip("Boolean flag to signal if the collided trigger for the text is a Diary Page. (Special Interaction)")]
     public bool isPage = false;
+    [Tooltip("Ruby from the Scene.")]
+    public GameObject Ruby;
+    [Tooltip("Idle frame for Ruby.")]
+    public Sprite RubyIdle;
     #endregion
 
     #region TextScript functions
     void Start()
     {
+        if (!Ruby)
+        {
+            Ruby = GameObject.Find("Ruby");
+        }
         // Verify that a TextManager was attached, else attach it (find it)
         if (!this.drTextManager)
         {
@@ -39,6 +47,10 @@ public class DRTextScript : MonoBehaviour
     // On trigger OR collision, handle checking if we play text at all.
     void OnTriggerEnter2D(Collider2D col)
     {
+        Ruby.GetComponent<RubyWalk>().isDarkRubyEncounter = true;
+        Ruby.GetComponent<RubyWalk>().GetRubyAnimator().enabled = false;
+        Ruby.GetComponent<SpriteRenderer>().sprite = RubyIdle;
+        GameObject.Find("TextManager").SetActive(false);
         // Case where we want to play the dialogue, it was not played before, and the collided object is
         // either Ruby or her Melee and we did not interact with a lever (i.e. we passed a door)
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.tag == "Melee") && this.gameObject.tag != "Levers")
@@ -58,6 +70,7 @@ public class DRTextScript : MonoBehaviour
     {
         // If we collide and it was either Ruby or her Melee, we trigger dialogue
         // This could be for boxes or the likes later
+        
         if (playText && !alreadyPlayed && (col.gameObject.tag == "Ruby" || col.gameObject.name == "Melee"))
         {
             TriggerDialogue();

@@ -136,6 +136,7 @@ public class DRTextManager : MonoBehaviour {
     // Processes the end dialogue
     private void ProcessEndDialogue()
     {
+        Debug.Log("ProcessEndDialogue() called");
         // Disable the buttons
         GameObject.Find("GoodBtn").SetActive(false);
         GameObject.Find("BadBtn").SetActive(false);
@@ -144,13 +145,13 @@ public class DRTextManager : MonoBehaviour {
         // Process for when we have more bad than good choices
         if (choiceCounter.badCounter > choiceCounter.goodCounter)
         {
-            string[] endScript = {"Dark Ruby: Oh Ruby… You’ve got so much to learn. About life, about dad, about mom… But more importantly, about yourself.", 
+            string[] endScript = {"Dark Ruby: Oh Ruby... You’ve got so much to learn. About life, about dad, about mom... But more importantly, about yourself.", 
                                      "Dark Ruby: Dad does love you and mom, don’t doubt that. But, things got complicated fast.",
                                  "Dark Ruby: He’s always had problems, and has been constantly fighting off this evil voice in his head. To protect you and mom, he decided to leave to seek help.",
                                  "Ruby: Dad did that? But...why? We were happy...",
                                  "Dark Ruby: That’s something for you to think about. I’m not going to tell you why when you already know. <i>Maybe you should have thought more about your answers.</i>",
                                  "Dark Ruby: Heh. Anyway... I’ve seen enough. I’ll let you go for now. But be warned, if your heart ever gets tainted by darkness again, I’ll be right here waiting to strike again. Always watching you..."};
-            WriteText(endScript);
+            this.WriteText(endScript);
         }
         else
         {
@@ -172,7 +173,7 @@ public class DRTextManager : MonoBehaviour {
                                  "Ruby: I... I understand. Ruby, I mean, other me... Thank you. And, I also forgive you for this.",
                                  "Dark Ruby: Heh. You’re really something, aren’t you...",
                                  "Diary: Good job other Ruby. I knew we could do this!"};
-            WriteText(endScript);
+            this.WriteText(endScript);
         }
     }
 
