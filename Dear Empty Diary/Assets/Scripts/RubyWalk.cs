@@ -119,11 +119,8 @@ public class RubyWalk : MonoBehaviour {
         else if (col.gameObject.tag == "Trap" && !hasHitFirstTrap)
         {
             hasHitFirstTrap = true; // No longer do this case after 1st trap collision
-            string[] trapDialogue = {"Ruby : Ouch! What the... What was that?",
-                                    "Diary : Oh no... I knew this wouldn't be easy. Ruby, it seems like there are traps now. Be careful where you walk! You only have so much health!",
-                                    "??? : Hahaha! You thought this would be easy? Don't make me laugh! You're better than that, Ruby! How could you be so foolish to step on it? Pathetic.",
-                                    "Ruby : Grr...",
-                                    "Diary : Calm down! We're still fine! Let's keep going, I can sense the page!"};
+            string[] trapDialogue = {"Ruby : Ouch! That hurt!",
+                                    "Diary : Watch your step Ruby! These traps hurt!"};
             GameObject.Find("TextManager").GetComponent<TextManager>().WriteText(trapDialogue);
         }
     }
