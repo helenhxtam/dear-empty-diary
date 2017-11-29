@@ -146,7 +146,7 @@ public class DRTextManager : MonoBehaviour {
         {
             string[] endScript = {"Dark Ruby: Oh Ruby… You’ve got so much to learn. About life, about dad, about mom… But more importantly, about yourself.", 
                                      "Dark Ruby: Dad does love you and mom, don’t doubt that. But, things got complicated fast.",
-                                 "DR: He’s always had problems, and has been constantly fighting off this evil voice in his head. To protect you and mom, he decided to leave to seek help.",
+                                 "Dark Ruby: He’s always had problems, and has been constantly fighting off this evil voice in his head. To protect you and mom, he decided to leave to seek help.",
                                  "Ruby: Dad did that? But...why? We were happy...",
                                  "Dark Ruby: That’s something for you to think about. I’m not going to tell you why when you already know. <i>Maybe you should have thought more about your answers.</i>",
                                  "Dark Ruby: Heh. Anyway... I’ve seen enough. I’ll let you go for now. But be warned, if your heart ever gets tainted by darkness again, I’ll be right here waiting to strike again. Always watching you..."};

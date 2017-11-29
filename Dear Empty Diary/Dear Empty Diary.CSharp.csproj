@@ -103,6 +103,8 @@
     <Compile Include="Assets\Scripts\Projectiles.cs" />
     <Compile Include="Assets\Scripts\Puzzle Scripts\Level2Room3Doors.cs" />
     <Compile Include="Assets\Scripts\Puzzle Scripts\Level2Room4Puzzle.cs" />
+    <Compile Include="Assets\Scripts\Puzzle Scripts\Level3Room3Puzzle.cs" />
+    <Compile Include="Assets\Scripts\Puzzle Scripts\Level3Room6Puzzle.cs" />
     <Compile Include="Assets\Scripts\RubyAttacking.cs" />
     <Compile Include="Assets\Scripts\RubyPushPull.cs" />
     <Compile Include="Assets\Scripts\RubyWalk.cs" />
