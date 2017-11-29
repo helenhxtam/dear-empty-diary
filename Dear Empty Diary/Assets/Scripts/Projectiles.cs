@@ -29,13 +29,9 @@ public class Projectiles : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag != "Ruby" && col.gameObject.tag != "TextTrigger")
+        if (col.gameObject.tag != "Ruby" && col.gameObject.tag != "TextTrigger" && col.gameObject.tag != "Trap")
         {
             Destroy(this.gameObject);
         }
-        /*
-        if (col.gameObject.tag == "Levers") {
-            Destroy(this.gameObject);
-        }*/
     }
 }
