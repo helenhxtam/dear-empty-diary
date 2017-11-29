@@ -12,7 +12,9 @@ public class PressurePlate : MonoBehaviour {
     // When Pressure is applied to plate
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "PushableBox") {
-            if (attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") { 
+            if (attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {
+                AudioSource source = this.gameObject.GetComponent<AudioSource>();
+                source.PlayOneShot(source.clip, 1);
                 attachedObject.GetComponent<DoorManager>().toggleDoor();
                 isActivated = !isActivated;
             }

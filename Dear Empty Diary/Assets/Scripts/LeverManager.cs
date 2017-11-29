@@ -16,6 +16,9 @@ public class LeverManager : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
 
         if (col.gameObject.tag == "Rock" || col.gameObject.tag == "Melee") {
+            AudioSource source = this.gameObject.GetComponent<AudioSource>();
+            source.PlayOneShot(source.clip, 1);
+
 
             // If the Attached Object is a Door
             if(attachedObject.tag == "Left Door" || attachedObject.tag == "Right Door" || attachedObject.tag == "Top Door" || attachedObject.tag == "Bottom Door") {

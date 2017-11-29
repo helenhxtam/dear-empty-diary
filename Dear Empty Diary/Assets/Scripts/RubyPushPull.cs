@@ -12,6 +12,24 @@ public class RubyPushPull : MonoBehaviour {
     private RaycastHit2D hit;
     private bool isLeft, isRight, isUp, isDown;
 
+    private bool boxMoving = false;
+
+    public void playSound(bool play)
+    {
+        AudioSource source = this.gameObject.GetComponent<AudioSource>();
+        if(play)
+        {
+            if (!source.isPlaying)
+            { 
+                source.PlayOneShot(source.clip, 1);
+            }
+        }
+        else
+        {
+            source.Stop();
+        }     
+    }
+
     // Update is called once per frame
     void Update() {
         Physics2D.queriesStartInColliders = false;
@@ -22,14 +40,14 @@ public class RubyPushPull : MonoBehaviour {
             isRight = true;
             isLeft = false;
             isUp = false;
-            isDown = false;
+            isDown = false;          
         }
         else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
             hit = Physics2D.Raycast(transform.position, Vector2.left * transform.localScale.x, distance, boxMask);
             isRight = false;
             isLeft = true;
             isUp = false;
-            isDown = false;
+            isDown = false;  
         }
         else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
             hit = Physics2D.Raycast(transform.position, Vector2.up * transform.localScale.x, distance, boxMask);
@@ -45,6 +63,7 @@ public class RubyPushPull : MonoBehaviour {
             isUp = false;
             isDown = true;
         }
+        
 
         // Pull box in input direction
         if (hit.collider != null && hit.collider.gameObject.tag == "PushableBox" && Input.GetKeyDown(KeyCode.P)) {
@@ -71,13 +90,30 @@ public class RubyPushPull : MonoBehaviour {
                 isLeft = false;
                 box.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             }
-
-
         }
         else if (Input.GetKeyUp(KeyCode.P)) {
             box.GetComponent<FixedJoint2D>().enabled = false;
             box.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+            
         }
+
+        print(hit.distance);
+        if (hit.collider != null && hit.collider.gameObject.tag == "PushableBox" && hit.distance <= 0.5f && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow)))
+        {
+            boxMoving = true;
+        }
+        else
+        {
+            boxMoving = false;
+        }
+
+        if (boxMoving)
+        {
+            playSound(true);
+            
+        }
+        else
+            playSound(false);
     }
 
     // Draw the ray cast
@@ -86,14 +122,22 @@ public class RubyPushPull : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * transform.localScale.x * distance);
+        
+            
 
         else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * transform.localScale.x * distance);
+           
+            
 
         else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.up * transform.localScale.x * distance);
+            
+        
+            
 
         else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)))
             Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.down * transform.localScale.x * distance);
+            
     }
 }
