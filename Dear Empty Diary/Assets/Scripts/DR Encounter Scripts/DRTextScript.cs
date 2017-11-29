@@ -47,9 +47,13 @@ public class DRTextScript : MonoBehaviour
     // On trigger OR collision, handle checking if we play text at all.
     void OnTriggerEnter2D(Collider2D col)
     {
+        // Set that it's the DR Encounter (true)
         Ruby.GetComponent<RubyWalk>().isDarkRubyEncounter = true;
+        // Disable the animator since we don't want her animated
         Ruby.GetComponent<RubyWalk>().GetRubyAnimator().enabled = false;
+        // Set her sprite to the idle one
         Ruby.GetComponent<SpriteRenderer>().sprite = RubyIdle;
+        // And disable the text manager (prevents enter presses)
         GameObject.Find("TextManager").SetActive(false);
         // Case where we want to play the dialogue, it was not played before, and the collided object is
         // either Ruby or her Melee and we did not interact with a lever (i.e. we passed a door)
