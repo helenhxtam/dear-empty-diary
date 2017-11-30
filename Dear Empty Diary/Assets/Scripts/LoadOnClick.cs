@@ -74,7 +74,8 @@ public class LoadOnClick : MonoBehaviour {
     }
 
     public void ExitApplication() {
-        UnityEditor.EditorApplication.isPlaying = false;
+        // UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 
     public void Resume() {
@@ -113,6 +114,9 @@ public class LoadOnClick : MonoBehaviour {
     }
 
     public void LoadLevel(int level) {
+        if(level == 1){
+            PlayerPrefs.SetInt("Health", 4);
+        }
         SceneManager.LoadScene(level);
     }
 

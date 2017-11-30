@@ -1,0 +1,61 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K620 (ID=0x13bb)
+    Vendor:   NVIDIA
+    VRAM:     1974 MB
+    Driver:   9.18.13.4161
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.054 seconds
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 3.004810 ms
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.078219 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1242.
+Total: 0.330496 ms (FindLiveObjects: 0.054982 ms CreateObjectMapping: 0.021332 ms MarkObjects: 0.242764 ms  DeleteObjects: 0.011116 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.743315 ms
+
+Unloading 88 unused Assets to reduce memory usage. Loaded Objects now: 391.
+Total: 0.788683 ms (FindLiveObjects: 0.051076 ms CreateObjectMapping: 0.027941 ms MarkObjects: 0.318177 ms  DeleteObjects: 0.390886 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.453080 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1242.
+Total: 0.400501 ms (FindLiveObjects: 0.109364 ms CreateObjectMapping: 0.020130 ms MarkObjects: 0.260791 ms  DeleteObjects: 0.009614 ms)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.903155 ms
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1377.
+Total: 1.089435 ms (FindLiveObjects: 0.167351 ms CreateObjectMapping: 0.079919 ms MarkObjects: 0.771858 ms  DeleteObjects: 0.068803 ms)
+
+UnloadTime: 2.570358 ms
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 545.
+Total: 0.929294 ms (FindLiveObjects: 0.069103 ms CreateObjectMapping: 0.051677 ms MarkObjects: 0.624036 ms  DeleteObjects: 0.183575 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at RubyHealth.updateHealth () [0x00000] in <filename unknown>:0 
+  at RubyHealth.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+

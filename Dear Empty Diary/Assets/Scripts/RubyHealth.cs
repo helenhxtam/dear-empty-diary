@@ -51,7 +51,6 @@ public class RubyHealth : MonoBehaviour
 
     void updateHealth()
     {
-        Debug.Log("Updated health");
         Image healthImage = healthUI.GetComponent<Image>();
         switch (health)
         {
