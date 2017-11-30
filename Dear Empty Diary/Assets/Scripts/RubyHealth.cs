@@ -19,24 +19,15 @@ public class RubyHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if(GameObject.FindGameObjectWithTag("Persistant") != null)
-        {
-            health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
-        }
-        else
-        {
-            health = 4;
-        }
+        health = PlayerPrefs.GetInt("Health");
         updateHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectWithTag("Persistant") != null)
-        {
-            health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
-        }
+        health = PlayerPrefs.GetInt("Health");
+        
         if (isDamaged)
         {
             timer -= Time.deltaTime;
@@ -52,14 +43,7 @@ public class RubyHealth : MonoBehaviour
     {
         if(!isDamaged)
         {
-            if (GameObject.FindGameObjectWithTag("Persistant") != null)
-            {
-                GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().decrementHealth();
-            }
-            else
-            {
-                health--;
-            }     
+            health--;   
             updateHealth();
             isDamaged = true;
         }
@@ -67,31 +51,34 @@ public class RubyHealth : MonoBehaviour
 
     void updateHealth()
     {
-        if(GameObject.FindGameObjectWithTag("Persistant") != null)
-        {
-            health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
-        }
+        Debug.Log("Updated health");
         Image healthImage = healthUI.GetComponent<Image>();
         switch (health)
         {
             case 0:
                 healthImage.sprite = heartSprites[0];
+                PlayerPrefs.SetInt("Health", 4);
                 SceneManager.LoadScene(0);
                 break;
             case 1:
                 healthImage.sprite = heartSprites[1];
+                PlayerPrefs.SetInt("Health", 1);
                 break;
             case 2:
                 healthImage.sprite = heartSprites[2];
+                PlayerPrefs.SetInt("Health", 2);
                 break;
             case 3:
                 healthImage.sprite = heartSprites[3];
+                PlayerPrefs.SetInt("Health", 3);
                 break;
             case 4:
                 healthImage.sprite = heartSprites[4];
+                PlayerPrefs.SetInt("Health", 4);
                 break;
             default:
                 healthImage.sprite = heartSprites[0];
+                PlayerPrefs.SetInt("Health", 0);
                 break;
         }
     }

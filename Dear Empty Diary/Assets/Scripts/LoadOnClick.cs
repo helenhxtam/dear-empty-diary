@@ -20,6 +20,8 @@ public class LoadOnClick : MonoBehaviour {
 
     void Start() {
 
+        PlayerPrefs.SetInt("Health", PlayerPrefs.GetInt("Health"));
+
         maxLevel = SceneManager.sceneCountInBuildSettings - 1;
 
         Time.timeScale = 1;
