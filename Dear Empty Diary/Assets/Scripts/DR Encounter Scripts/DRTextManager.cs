@@ -128,7 +128,7 @@ public class DRTextManager : MonoBehaviour {
             else
             {
                 // Game is done! Return to main menu.
-                LoadMainMenu();
+                LoadEndCredits();
             }
         }
     }
@@ -178,13 +178,15 @@ public class DRTextManager : MonoBehaviour {
     }
 
     // Load the main menu at the end
-    private void LoadMainMenu()
+    private void LoadEndCredits()
     {
         PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
         Debug.Log("Saved Game");
 
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+
         Debug.Log("You finished the game!");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(currentLevel + 1);
     }
     #endregion
 }
