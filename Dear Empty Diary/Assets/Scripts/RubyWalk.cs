@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RubyWalk : MonoBehaviour {
     // The direction she's facing
@@ -11,10 +12,24 @@ public class RubyWalk : MonoBehaviour {
 
     // Booleans to switch state of animator
     private bool isMoving, isForward, isBack, isLeft, isRight;
-    private float speed = 2.0f;
+    private float speed = 3.5f;
+    // Bool to signal if Ruby hit a trap for the first time or not
+    private bool hasHitFirstTrap = false;
+    // Bool to signal if Ruby got hit by a CannonProjectile or not
+    private bool hasHitFirstCannonProjectile = false;
+
+    [Tooltip("Flag to determine if Ruby can move (for pause menu)")]
+    public static bool canMove = true;
+
+    [Tooltip("If it's the DR Encounter, Ruby can't move.")]
+    public bool isDarkRubyEncounter = false;
+
+    [Tooltip("The fade panel when crossing rooms.")]
+    public GameObject fadeObject;
 
     void Start() {
         animator = GetComponent<Animator>();
+        fadeObject.SetActive(false);
 
         direction = Vector2.down;
         isForward = true;
@@ -22,7 +37,10 @@ public class RubyWalk : MonoBehaviour {
 
     // FixedUpdate is called once per frame
     void FixedUpdate () {
-        Movement();
+        if (canMove && !isDarkRubyEncounter)
+        {
+            Movement();
+        }
 
         animator.SetBool("forward", isForward);
         animator.SetBool("back", isBack);
@@ -30,6 +48,8 @@ public class RubyWalk : MonoBehaviour {
         animator.SetBool("right", isRight);
         animator.SetBool("moving", isMoving);
     }
+
+    public Animator GetRubyAnimator() { return this.animator; }
 
     // Keyboard controls to move Ruby
     void Movement() {
@@ -54,7 +74,7 @@ public class RubyWalk : MonoBehaviour {
                 isForward = isBack = false;
             }
 
-            if (aDir.y != 0) {
+            else if (aDir.y != 0) {
                 direction = new Vector2(0, aDir.y);
                 transform.Translate(new Vector2(0, aDir.y) * speed * Time.deltaTime);
 
@@ -67,12 +87,14 @@ public class RubyWalk : MonoBehaviour {
 
     // Moves Ruby depending on which door she takes
     void OnTriggerEnter2D(Collider2D col) {
-
+        AudioSource source = col.gameObject.GetComponent<AudioSource>();
         // Move Ruby to the Right
         if (col.gameObject.tag == "Right Door")
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Right Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
+            StartCoroutine(fade());
         }
 
         // Move Ruby to the Left
@@ -80,6 +102,8 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Left Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
+            StartCoroutine(fade());
         }
 
         // Move Ruby to the Top
@@ -87,6 +111,8 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Top Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
+            StartCoroutine(fade());
         }
 
         // Move Ruby to the Bottom
@@ -94,11 +120,39 @@ public class RubyWalk : MonoBehaviour {
         {
             GameController.gameCamera.GetComponent<CameraController>().MoveCamera("Bottom Door");
             this.transform.position = col.gameObject.transform.Find("Spawn Location").transform.position;
+            source.PlayOneShot(source.clip, 1);
+            StartCoroutine(fade());
+        }
+        else if (col.gameObject.tag == "Trap" && !hasHitFirstTrap)
+        {
+            hasHitFirstTrap = true; // No longer do this case after 1st trap collision
+            string[] trapDialogue = {"Ruby : Ouch! That hurt!",
+                                    "Diary : Watch your step Ruby! These traps hurt!"};
+            GameObject.Find("TextManager").GetComponent<TextManager>().WriteText(trapDialogue);
+        }
+        else if (col.gameObject.tag == "CannonProjectile" && !hasHitFirstCannonProjectile)
+        {
+            hasHitFirstCannonProjectile = true;
+            string[] cannonDialogue = {"Ruby: Ouch! That hurt!",
+                                      "Diary: Be careful!"};
+            GameObject.Find("TextManager").GetComponent<TextManager>().WriteText(cannonDialogue);
         }
     }
 
     // Returns the direction Ruby's facing
     public Vector2 GetDirection() {
         return direction;
+    }
+
+    public IEnumerator fade()
+    {
+        fadeObject.SetActive(true);
+        Image img = fadeObject.GetComponent<Image>();
+        for (float i = 1; i >= 0; i -= (Time.deltaTime / 0.8f))
+        {
+            img.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+        fadeObject.SetActive(false);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public static GameObject gameCamera;
+    public static GameObject gameCamera; // The current Game Camera
 
     void Start()
     {

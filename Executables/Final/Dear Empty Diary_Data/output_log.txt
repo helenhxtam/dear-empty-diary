@@ -1,0 +1,42 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K620 (ID=0x13bb)
+    Vendor:   NVIDIA
+    VRAM:     1974 MB
+    Driver:   9.18.13.4161
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  1.308 seconds
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Portable Git\comp376-project\Executables\Final\Dear Empty Diary_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.967253 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.951429 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 488.
+Total: 0.301352 ms (FindLiveObjects: 0.036354 ms CreateObjectMapping: 0.012018 ms MarkObjects: 0.227441 ms  DeleteObjects: 0.010515 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at RubyHealth.updateHealth () [0x00000] in <filename unknown>:0 
+  at RubyHealth.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 20e0 -> priority: 1 
+  Thread -> id: 231c -> priority: 1 
+  Thread -> id: 217c -> priority: 1 
+  Thread -> id: 18d0 -> priority: 1 
