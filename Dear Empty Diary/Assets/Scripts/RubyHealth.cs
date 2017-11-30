@@ -19,15 +19,24 @@ public class RubyHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //health = 4;
-        health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        if(GameObject.FindGameObjectWithTag("Persistant") != null)
+        {
+            health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        }
+        else
+        {
+            health = 4;
+        }
         updateHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        if(GameObject.FindGameObjectWithTag("Persistant") != null)
+        {
+            health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        }
         if (isDamaged)
         {
             timer -= Time.deltaTime;
@@ -43,8 +52,14 @@ public class RubyHealth : MonoBehaviour
     {
         if(!isDamaged)
         {
-            //health--;
-            GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().decrementHealth();
+            if (GameObject.FindGameObjectWithTag("Persistant") != null)
+            {
+                GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().decrementHealth();
+            }
+            else
+            {
+                health--;
+            }     
             updateHealth();
             isDamaged = true;
         }
@@ -52,7 +67,10 @@ public class RubyHealth : MonoBehaviour
 
     void updateHealth()
     {
-        health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        if(GameObject.FindGameObjectWithTag("Persistant") != null)
+        {
+            health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        }
         Image healthImage = healthUI.GetComponent<Image>();
         switch (health)
         {
