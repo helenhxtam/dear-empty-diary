@@ -40,9 +40,12 @@ public class RubyHealth : MonoBehaviour
 
     void takeDamage()
     {
-        GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().decrementHealth();
-        updateHealth();
-        isDamaged = true;
+        if(!isDamaged)
+        {
+            GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().decrementHealth();
+            updateHealth();
+            isDamaged = true;
+        }
     }
 
     void updateHealth()
@@ -81,7 +84,7 @@ public class RubyHealth : MonoBehaviour
             if (isDamaged)
             {
                 Color color = gameObject.GetComponent<SpriteRenderer>().color;
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                //gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 color.a = 0.1f;
                 gameObject.GetComponent<SpriteRenderer>().color = color;
             }
@@ -91,7 +94,7 @@ public class RubyHealth : MonoBehaviour
     void TimeEnd()
     {
         Color color = gameObject.GetComponent<SpriteRenderer>().color;
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        //gameObject.GetComponent<BoxCollider2D>().enabled = true;
         color.a = 1.0f;
         gameObject.GetComponent<SpriteRenderer>().color = color;
         isDamaged = false;
