@@ -42,7 +42,7 @@ public class Level2Room4Puzzle : MonoBehaviour {
             }
 
             // Timer has elapsed
-            else if (timer > 5.0f) {
+            else if (timer > 0.0f) {
                 // Disable Cloud of Gas
 
                 // Re-open Door
