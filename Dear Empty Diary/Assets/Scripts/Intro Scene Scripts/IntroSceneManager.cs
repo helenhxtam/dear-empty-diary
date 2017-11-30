@@ -45,6 +45,7 @@ public class IntroSceneManager : MonoBehaviour {
         this.nameText = nameBox.GetComponent<Text>();
 
         ToggleTextBox();
+        backgroundObject  = GameObject.Find("r1");
     }
 
     void FixedUpdate() {
@@ -89,11 +90,11 @@ public class IntroSceneManager : MonoBehaviour {
             // Change background sprite at certain amount of button presses
             if (counter == 2)
             {
-                backgroundObject.GetComponent<SpriteRenderer>().sprite = backgrounds[0];
+                backgroundObject.GetComponent<SpriteRenderer>().sprite = backgrounds[1];
             }
             if (counter == 4)
             {
-                backgroundObject.GetComponent<SpriteRenderer>().sprite = backgrounds[1];
+                backgroundObject.GetComponent<SpriteRenderer>().sprite = backgrounds[2];
             }
         }
         else {

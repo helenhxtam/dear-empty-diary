@@ -15,7 +15,8 @@ public class OnMouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         buttonText = this.GetComponent<Text>();
         // We can also customize the color with rgba as such: new Color(r, g, b, a))
-        hoverColor = Color.red;
+        //hoverColor = new Color(188.0f, 39.0f, 39.0f, 255.0f);
+        hoverColor = new Color(188.0f/255f, 39.0f/255f, 39.0f/255f);
         originalColor = buttonText.color;
     }
 
