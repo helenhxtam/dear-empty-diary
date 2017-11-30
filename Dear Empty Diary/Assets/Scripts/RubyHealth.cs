@@ -19,12 +19,14 @@ public class RubyHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        health = 4;
+        health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
+        updateHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
+        health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
         if (isDamaged)
         {
             timer -= Time.deltaTime;
@@ -38,13 +40,14 @@ public class RubyHealth : MonoBehaviour
 
     void takeDamage()
     {
-        health--;
+        GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().decrementHealth();
         updateHealth();
         isDamaged = true;
     }
 
     void updateHealth()
     {
+        health = GameObject.FindGameObjectWithTag("Persistant").GetComponent<PersistantValues>().health;
         Image healthImage = healthUI.GetComponent<Image>();
         switch (health)
         {
