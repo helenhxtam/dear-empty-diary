@@ -23,6 +23,10 @@ Space - Throw a Rock
 
 M - 'Close-Range' Interact
 
+To pull boxes, press and hold 'P', and move in the direction of your liking.
+
+To progress through dialogues, press 'Enter' (Return).
+
 ### UNITY BUILD DETAILS ###
 
 This was built mainly using Unity3D Version 5.6.2f and 5.6.3f.
