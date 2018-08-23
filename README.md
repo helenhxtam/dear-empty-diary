@@ -2,8 +2,8 @@
 
 ## About
 
-"Dear Empty Diary" is a 2D puzzle-based, story-oriented game.
-The game follows the journey of Ruby, a 10 year old protagonist, as she recovers lost pages of her diary in order to escape a dark, twisted, and corrupt parallel world that her alter negative self created.
+"Dear Empty Diary" is a 2D puzzle-based and story-oriented game.
+The game follows the journey of Ruby, a 10 year-old protagonist, as she recovers the lost pages of her diary in order to escape a dark, twisted, and corrupt parallel world that her alter negative self created.
 
 ## Controls
 
@@ -21,7 +21,7 @@ D - Move Right
 
 Space - Throw a Rock
 
-M - 'Close-Range' Interact
+M - Melee Interact
 
 ### Environment Interaction
 Hold P + Direction - Pull boxes
